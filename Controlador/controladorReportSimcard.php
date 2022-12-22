@@ -19,7 +19,7 @@ class orders extends conectar {
 	public function getData($tables,$campos,$search){
 		$offset=$search['offset'];
 		$per_page=$search['per_page'];
-		$sWhere=" sim.Numero_linea LIKE '%".$search['query']."%'";
+		$sWhere=" sim.Numero_linea LIKE '%".$search['query']."%' or sim.serie LIKE '%".$search['query']."%' or sim.Ubicacion_id LIKE '%".$search['query']."%' or sim.Observacion LIKE '%".$search['query']."%' or ope.descripcion LIKE '%".$search['query']."%'" ;
 		if ($search['location']!=""){
 			$sWhere.=" and sim.Ubicacion_id = '".$search['location']."'";
 		}

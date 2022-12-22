@@ -11,7 +11,7 @@ if($action == 'ajax'){
 	$status=strip_tags($_REQUEST['status']);
 	$per_page=intval($_REQUEST['per_page']);
 	$tables="simcard as sim";
-	$campos="sim.Numero_linea,sim.Serie,sim.Usuario,sim.Clave,sim.Apn,sim.Plan,ope.descripcion OperadorD, ub.descripcion Ubicacion,sim.Observacion";
+	$campos="sim.Numero_linea,sim.Serie,sim.Usuario,sim.Clave,sim.Apn,sim.Plan,ope.descripcion OperadorD, ub.descripcion Ubicacion,ub.id Sucursal,sim.Observacion";
 	//$campos="*";
 	//Variables de paginación
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -80,7 +80,7 @@ if($action == 'ajax'){
 			<td><?=$row['Apn'];?></td>
 			<td><?=$row['Plan'];?></td>
 			<td><?=$row['OperadorD'];?></td>
-			<td><?=$row['Ubicacion'];?></td>
+			<td><?=$row['Ubicacion'];?>-<?=$row['Sucursal'];?></td>
 			<td><?=$row['Observacion'];?></td>
 			<!--<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>Icono para redirigir-->
 		</tr>

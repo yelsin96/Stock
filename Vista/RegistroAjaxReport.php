@@ -12,7 +12,7 @@ if($action == 'ajax'){
 	$status=strip_tags($_REQUEST['status']);
 	$per_page=intval($_REQUEST['per_page']);
 	$tables="movimientos as mov";
-	$campos="mov.id, articulo_id, ub.descripcion ubicacion, art.descripcion articulo, fecha,incidente, usu1.nombre nombre1, usu1.apellidos apellidos1, usu2.nombre nombre2, usu2.apellidos apellidos2";
+	$campos="mov.id, articulo_id, ub.descripcion ubicacion, ub.id Sucursal, art.descripcion articulo, fecha,incidente, usu1.nombre nombre1, usu1.apellidos apellidos1, usu2.nombre nombre2, usu2.apellidos apellidos2";
 	//$campos="*";
 	//Variables de paginación
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -76,7 +76,7 @@ if($action == 'ajax'){
 		    <td><?=$row['id'];?></td>
 		    <td><a href="#"><img src="img/1.png" class="avatar" alt="Avatar" style="height: 18px; width: 18px;"> <?=$row['articulo_id'];?></a></td>
 			<td><?=$row['articulo'];?></td>
-			<td><?=$row['ubicacion'];?></td>
+			<td><?=$row['ubicacion'];?>-<?=$row['Sucursal'];?></td>
 		    <td><?=date("d/m/Y", strtotime($row['fecha']));?></td>                        
 			<td><span class="status <?=$class_css; ?>">&bull;</span> <?=$row['incidente'];?></td>
 			<td><?=$row['nombre1'];?> <?=$row['apellidos1'];?></td>

@@ -11,7 +11,7 @@ if($action == 'ajax'){
 	$status=strip_tags($_REQUEST['status']);
 	$per_page=intval($_REQUEST['per_page']);
 	$tables="articulo as art";
-	$campos="art.placa,art.descripcion,tip.descripcion tipo,ub.descripcion ubicacion,art.observacion";
+	$campos="art.placa,art.descripcion,tip.descripcion tipo,ub.descripcion ubicacion,ub.id Sucursal,art.observacion";
 	//$campos="*";
 	//Variables de paginación
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -72,7 +72,7 @@ if($action == 'ajax'){
 		    <td><img src="img/1.png" class="avatar" alt="Avatar" style="height: 18px; width: 18px;"> <?=$row['placa'];?></td>
 			<td><?=$row['descripcion'];?></td>
 			<td><?=$row['tipo'];?></td>                  
-			<td><?=$row['ubicacion'];?></td>
+			<td><?=$row['ubicacion'];?>-<?=$row['Sucursal'];?></td>
 			<td><?=$row['observacion'];?></td>
 			<!--<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>Icono para redirigir-->
 		</tr>

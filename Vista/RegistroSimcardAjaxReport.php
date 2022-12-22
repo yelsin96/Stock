@@ -10,7 +10,7 @@ if($action == 'ajax'){
 	$status=strip_tags($_REQUEST['status']);
 	$per_page=intval($_REQUEST['per_page']);
 	$tables="movimientossimcard as mov";
-	$campos="mov.id, mov.simcard_id, ub.descripcion ubicacion, fecha,incidente, usu1.nombre nombre1, usu1.apellidos apellidos1";
+	$campos="mov.id, mov.simcard_id, ub.descripcion Ubicacion, ub.id Sucursal,fecha,incidente, usu1.nombre nombre1, usu1.apellidos apellidos1";
 	//$campos="*";
 	//Variables de paginación
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -69,7 +69,7 @@ if($action == 'ajax'){
 		<tr>
 		    <td><?=$row['id'];?></td>
 		    <td><?=$row['simcard_id'];?></a></td>
-			<td><?=$row['ubicacion'];?></td>
+			<td><?=$row['Ubicacion'];?>-<?=$row['Sucursal'];?></td>
 		    <td><?=date("d/m/Y", strtotime($row['fecha']));?></td>                        
 			<td><span class="status <?=$class_css; ?>">&bull;</span> <?=$row['incidente'];?></td>
 			<td><?=$row['nombre1'];?> <?=$row['apellidos1'];?></td>

@@ -51,10 +51,10 @@
 				<div class="row">
                     
                     <div class="col-sm-9">
-						<button type="button" class="btn btn-primary"><i class="fa fa-search" onclick="load(1);"></i></button>
+						<!-- <button type="button" class="btn btn-primary"><i class="fa fa-search" onclick="load(1);"></i></button> -->
 						<div class="filter-group">
 							<label>Placa</label>
-							<input type="text" class="form-control" id="name">
+							<input type="text" class="form-control" id="name" onkeyup="load(1);">
 						</div>
 						<div class="filter-group">
 							<label>Ubicación</label>
