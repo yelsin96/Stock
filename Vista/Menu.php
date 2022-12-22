@@ -12,8 +12,8 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movimientos
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="registro.php">Ingresar Movimiento Articulos</a></li>
-            <li><a href="registroSimcard.php">Ingresar Movimiento Simcard</a></li>
+            <li><a href="Registro.php">Ingresar Movimiento Articulos</a></li>
+            <li><a href="RegistroSimcard.php">Ingresar Movimiento Simcard</a></li>
             <li><a href="registroModificar.php">Modificar Movimiento Articulo</a></li>
           </ul>
         </li>
@@ -30,7 +30,6 @@
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="simcard.php">Ingresar Simcard</a></li>
-            <li><a href="modificarSimcard.php">Modificar Simcard</a></li>
           </ul>
         </li>
         <li class="dropdown">

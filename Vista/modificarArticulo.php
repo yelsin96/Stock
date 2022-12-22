@@ -51,7 +51,7 @@
         <form action="modificarArticulo.php" method="post" name="ModArticulo">
             <div class="form-group">
                 <label>Placa a Modificar:</label>
-                <input class='form-control' name='placaM' type='text' pattern='[0-9]{1,5}' title='Ingrese un numero de Placa valido.' required>
+                <input class='form-control' name='placaM' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{1,7}' title='Ingrese un numero de Placa valido.' required>
             </div>
             <div class="form-group">
                 <input type="submit" name="boton" value="Consultar" class="btn btn-primary">
@@ -62,8 +62,8 @@
         <form action="modificarArticulo.php" method="post" name="formArticulo">
             <div class="form-group">
                 <label>Placa:</label>
-                <?php echo "<input class='form-control' style='display:none;' value='".$consultaM["placa"]."' name='placa' type='text' pattern='[0-9]{1,5}' title='Ingrese un numero de Placa valido.' required>"  ?>
-                <?php echo "<input class='form-control' disabled value='".$consultaM["placa"]."' type='text' pattern='[0-9]{1,5}' title='Ingrese un numero de Placa valido.' required>"  ?>
+                <?php echo "<input class='form-control' style='display:none;' value='".$consultaM["placa"]."' name='placa' type='text'>"  ?>
+                <?php echo "<input class='form-control' disabled value='".$consultaM["placa"]."' type='text'>"  ?>
 
             </div>
             <div class="form-group">

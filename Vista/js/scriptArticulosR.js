@@ -9,8 +9,9 @@
 			var parametros = {"action":"ajax","page":page,'query':query,'location':location,'status':status,'per_page':per_page};
 			$("#loader").fadeIn('slow');
 			$.ajax({
-				url:'ArticulosAjaxReport.php',
+				url:'articulosAjaxReport.php',
 				data: parametros,
+				type: 'post',
 				 beforeSend: function(objeto){
 				$("#loader").html("Cargando...");
 			  },

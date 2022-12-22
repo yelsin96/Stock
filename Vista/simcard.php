@@ -78,7 +78,7 @@
             </div>
             <div class="form-group">
                 <label>Observacion:</label>
-                <input class="form-control" maxlength="200" name="observacion" type="text"> 
+                <input class="form-control"  name="observacion" type="text" pattern="{0,100}"> 
             </div>
             <div class="form-group">
                 <input type="submit" name="boton" value="Insertar" class="btn btn-primary">

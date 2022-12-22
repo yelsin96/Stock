@@ -104,7 +104,6 @@
 
 		public function insertarRegistro($articulo,$ubicacion,$incidente,$usuarioE,$usuarioR,$login){
 			$consultaArticulo = "SELECT * FROM `articulo` WHERE placa ='".$articulo."'";
-			//echo $consultaArticulo;
             $resultadoArticulo = mysqli_fetch_array(mysqli_query( $this->conn, $consultaArticulo ));
             
             if ($resultadoArticulo['ubicacion_id'] == $ubicacion) {

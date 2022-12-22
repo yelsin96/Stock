@@ -27,6 +27,7 @@
 		}
 
 		public function insertarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$login){
+			$ubicacion = "9008";
 			$sql = "INSERT INTO `articulo`( `placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `observacion`)";
             $sql.= "VALUES ('".$placa."', '".$descripcion."','".$tipo."',".$ubicacion.",'".$observacion."')";
           	$resultado = mysqli_query( $this->conn, $sql );
@@ -51,9 +52,9 @@
 
 		public function modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$login){
 			if ($ubicacion == "") {
-				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`= null,`observacion`= '".$observacion."' WHERE `articulo`.`placa` = ".$placa;
+				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`= null,`observacion`= '".$observacion."' WHERE `articulo`.`placa` = '".$placa."'";
 			}else{
-				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`='".$ubicacion."',`observacion`= '".$observacion."' WHERE `articulo`.`placa` = ".$placa;
+				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`='".$ubicacion."',`observacion`= '".$observacion."' WHERE `articulo`.`placa` = '".$placa."'";
 			}
           	$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {

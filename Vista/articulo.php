@@ -5,6 +5,7 @@
     <title>Articulo</title> 
     <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/scripRegArt.js"></script>
 </head>
 <body>
     <div class="container">
@@ -38,16 +39,8 @@
         </div>
         <form action="articulo.php" method="post" name="formArticulo">
             <div class="form-group">
-                <label>Placa:</label>
-                <input class="form-control"  name="placa" type="text" pattern="[0-9]{1,5}" title="Ingrese un numero de Placa valido." required> 
-            </div>
-            <div class="form-group">
-                <label>Descripcion:</label>
-                <input class="form-control"  name="descripcion" type="text" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{1,40}"  required> 
-            </div>
-            <div class="form-group">
                 <label>Seleccione Tipo:</label>
-                <select class="form-control" name="tipo" required>
+                <select class="form-control" name="tipo" id="tipo" required onchange="TipoArticulo()">
                     <option value="">Seleccione:</option>
                     <?php
                         $resultadoTipo = $articulo->consultarTipo();
@@ -57,18 +50,14 @@
                     ?>  
                 </select>
             </div>
-            <!--<div class="form-group">
-                <label>Seleccione Ubicacion:</label>
-                <select class="form-control" name="ubicacion" required>
-                    <option value="">Seleccione:</option>
-                    <?php
-                        $resultadoUbicacion = $articulo->consultarUbicacion();
-                        while ($valores = mysqli_fetch_array($resultadoUbicacion)) {
-                            echo '<option value="'.$valores["id"].'">'.$valores["descripcion"].'</option>';
-                        }
-                    ?>  
-                </select>
-            </div>-->
+            <div class="form-group">
+                <label>Placa:</label>
+                <input class="form-control"  name="placa" id="placa" type="text" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{1,7}" title="Ingrese un numero de Placa valido." required> 
+            </div>
+            <div class="form-group">
+                <label>Descripcion:</label>
+                <input class="form-control"  name="descripcion" type="text" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{1,40}"  required> 
+            </div>
             <div class="form-group">
                 <label>Observacion:</label>
                 <input class="form-control"  name="observacion" type="text" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}"> 

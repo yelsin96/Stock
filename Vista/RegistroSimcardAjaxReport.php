@@ -2,7 +2,7 @@
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	
-	include('../controlador/controladorReportMovSimcard.php');
+	include('../Controlador/controladorReportMovSimcard.php');
 	$database=new orders();
 	//Recibir variables enviadas
 	$query=strip_tags($_REQUEST['query']);
@@ -88,7 +88,7 @@ if($action == 'ajax'){
 				echo '<div class="hint-text">Mostrando '.$inicios.' al '.$finales.' de '.$numrows.' registros</div>';
 				
 				
-				include '../controlador/pagination.php'; //include pagination class
+				include '../Controlador/pagination.php'; //include pagination class
 				$pagination=new Pagination($page, $total_pages, $adjacents);
 				echo $pagination->paginate();
  

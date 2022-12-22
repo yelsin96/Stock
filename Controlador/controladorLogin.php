@@ -9,6 +9,8 @@
 		}
 
 		public function consultarLogin($username, $password){
+			
+
 			/*$consultaLogin = "SELECT * FROM usuarios where username='".$username."' and password='".$password."'";
             $resultadoLogin = mysqli_query( $this->conn, $consultaLogin );
 			return $resultadoLogin;*/

@@ -39,7 +39,7 @@
         <div class="page-header">
             <h1>Ingresar Registro Articulo</h1>
         </div>
-        <form action="registro.php" method="post" name="formRegistro">
+        <form action="Registro.php" method="post" name="formRegistro">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">

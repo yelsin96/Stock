@@ -11,6 +11,7 @@
 			$.ajax({
 				url:'RegistroSimcardAjaxReport.php',
 				data: parametros,
+				type: 'post',
 				 beforeSend: function(objeto){
 				$("#loader").html("Cargando...");
 			  },

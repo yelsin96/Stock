@@ -10,6 +10,7 @@
 
 
 		public function insertarSimcard($linea,$serie,$usuario,$clave,$apn,$plan,$operador,$ubicacion,$observacion,$login){
+			$ubicacion = "9008";
 			$sql = "INSERT INTO `simcard`( `Numero_linea`,`serie`, `usuario`, `clave`, `Apn`, `Plan`, `Operador`, `Ubicacion_id`, `Observacion`)";
             $sql.= "VALUES ('".$linea."', '".$serie."','".$usuario."','".$clave."','".$apn."','".$plan."','".$operador."',".$ubicacion.",'".$observacion."')";
           	$resultado = mysqli_query( $this->conn, $sql );
@@ -43,6 +44,12 @@
 			return $resultadoSimcard;
 		}
 
+		public function consultarSimcardModal($linea, $serie, $operador){
+			$consultaSimcard = "SELECT * FROM `simcard` WHERE  operador =".$operador." and Numero_linea like '%".$linea."%' and Serie like '%".$serie."%' ORDER BY `simcard`.`Numero_linea` ASC";
+            $resultadoSimcard = mysqli_query( $this->conn, $consultaSimcard );
+			return $resultadoSimcard;
+		}
+
 		public function consultarUbicacion(){
 			$consultaUbicacion = "SELECT * FROM `ubicacion` ORDER BY `ubicacion`.`descripcion` ASC";
             $resultadoUbicacion = mysqli_query( $this->conn, $consultaUbicacion );
@@ -53,12 +60,6 @@
 			$consultaUsuario = "SELECT * FROM `usuarios` where estado_id = 1 ORDER BY `usuarios`.`nombre` ASC";
             $resultadoUsuario = mysqli_query( $this->conn, $consultaUsuario );
 			return $resultadoUsuario;
-		}
-
-		public function consultarSimcard($lineaM){
-			$consultaSimcard = "SELECT * FROM `simcard` WHERE Numero_linea = '".$lineaM."'";
-            $resultadoSimcard = mysqli_query( $this->conn, $consultaSimcard );
-			return $resultadoSimcard;
 		}
 
 		public function insertarRegistroSimcard($simcard,$ubicacion,$incidente,$usuario,$login){
@@ -98,30 +99,10 @@
 	        }
 		}
 
-		public function modificarSimcard($linea,$observacion,$login){
-			$sql = "UPDATE `simcard` SET `Observacion`= '".$observacion."' WHERE `simcard`.`Numero_linea` = ".$linea;
-
+		public function modificarSimcard($simcard,$ubicacion){
+			$sql = "UPDATE `simcard` SET `Ubicacion_id`= '".$ubicacion."' where Numero_linea = ".$simcard;
           	$resultado = mysqli_query( $this->conn, $sql );
-          	if ($resultado==TRUE) {
-          		$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
-	            $sqlHistorial.= "VALUES (NULL,'".$login."', 'modifico Simcard: ".$linea." observacion: ".$observacion."','Simcard','".$linea."',NOW())";
-
-            	$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
-
-		        echo "<div class='alert alert-success alert-dismissible'>";
-				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-				echo "  <strong>Excelente!</strong> Se Modifico Simcard correctamente.";
-				echo "</div>";
-
-          	}else{
-		        echo "<div class='alert alert-danger alert-dismissible'>";
-				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-				echo "  <strong>Error!</strong> ".mysqli_error($this->conn).$sql;
-				echo "</div>";
-          	}
 		}
-
-		
 
 		/*--------------------------------------------------------------
 * Función encargada de exportar a excel.

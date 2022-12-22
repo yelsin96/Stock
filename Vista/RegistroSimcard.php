@@ -39,7 +39,7 @@
         <div class="page-header">
             <h1>Ingresar Registro Simcard</h1>
         </div>
-        <form action="registroSimcard.php" method="post" name="formRegistro">
+        <form action="RegistroSimcard.php" method="post" name="formRegistro">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -55,7 +55,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="datos_ajax">
                         
                     </div>

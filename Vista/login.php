@@ -9,7 +9,6 @@
 <body>
 
 	<?php
-        //phpinfo();
         session_start();
         if(!isset($_SESSION['user_id'])){
 
@@ -26,7 +25,7 @@
 		    if (!$result) {
                 echo "<div class='alert alert-danger alert-dismissible'>";
                 echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-                echo "  <strong>Error!</strong> Usuario o Contraseña invalido";
+                echo "  <strong>Error!</strong> Usuario no existe o Contraseña invalida";
                 echo "</div>";
 		    } else {
 		        //if (password_verify($password, $result['password'])) { ---revisar
@@ -38,10 +37,14 @@
                     echo "</div>";
 		            echo "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=index.php'>";
 		        } else {
+              
 		            echo "<div class='alert alert-danger alert-dismissible'>";
                     echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
                     echo "  <strong>Error!</strong> Usuario o Contraseña invalido";
                     echo "</div>";
+           
+
+
 		        }
 		    }
 		}
@@ -77,9 +80,8 @@
 </form>
     <?php 
         } else {
-            echo "HOLA";
-            //header('Location: index.php');
-            //exit;
+            header('Location: index.php');
+            exit;
         }
     ?>
 

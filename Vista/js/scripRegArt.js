@@ -46,5 +46,13 @@ function seleccionarArt(){
 		$("#input-articulos").val(ident);
 		$("#cerrar").trigger("click");
 	});
+}
 
+function TipoArticulo(){
+	var tipo=$("#tipo").val();
+	if (tipo == '1') {
+		$("#placa").val("M-");
+	}else if(tipo == '2'){
+		$("#placa").val("MI-");
+	}
 }
