@@ -40,6 +40,8 @@
 		        echo "<div class='alert alert-success alert-dismissible'>";
 				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
 				echo "  <strong>Excelente!</strong> Se ingreso Articulo correctamente.";
+				echo "  <strong>!</strong> desea ingresar carecteristicas del equipo.";
+				echo "<a href='index1.php?activo=".$placa."'><input type='button' value='insertar'></a>"; 
 				echo "</div>";
 
           	}else{
@@ -50,11 +52,11 @@
           	}
 		}
 
-		public function modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$login){
+		public function modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$datos,$login){
 			if ($ubicacion == "") {
-				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`= null,`observacion`= '".$observacion."' WHERE `articulo`.`placa` = '".$placa."'";
+				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`= null,`observacion`= '".$observacion."',`id_datos`= '".$datos."' WHERE `articulo`.`placa` = '".$placa."'";
 			}else{
-				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`='".$ubicacion."',`observacion`= '".$observacion."' WHERE `articulo`.`placa` = '".$placa."'";
+				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`='".$ubicacion."',`observacion`= '".$observacion."',`id_datos`= '".$datos."' WHERE `articulo`.`placa` = '".$placa."'";
 			}
           	$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {

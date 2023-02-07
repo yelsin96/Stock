@@ -45,7 +45,8 @@ if($action == 'ajax'){
                 <th>Descripcion</th>
 				<th>Tipo</th>
 				<th>Ubicacion</th>						
-                <th>Observacion</th>						
+                <th>Observacion</th>
+				<th></th>						
             </tr>
         </thead>
         <tbody>
@@ -73,7 +74,7 @@ if($action == 'ajax'){
 			<td><?=$row['descripcion'];?></td>
 			<td><?=$row['tipo'];?></td>                  
 			<td><?=$row['ubicacion'];?>-<?=$row['Sucursal'];?></td>
-			<td><?=$row['observacion'];?></td>
+			<td><a href='mirarCaracteristica.php'><input type='button' value='modificar datos' class="btn btn-primary"></a></td>
 			<!--<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>Icono para redirigir-->
 		</tr>
 			<?php
