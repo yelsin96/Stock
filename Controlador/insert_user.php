@@ -13,6 +13,7 @@
             $resultadoDatos = mysqli_query( $this->conn, $consultarDatos );
 			return $resultadoDatos;
 		}
+		
 
 		public function mirarDatos($placaM){
 			$mirarDatos = "SELECT * FROM `articulo` INNER JOIN datos on datos.id=articulo.id_datos WHERE placa='$placaM'";
@@ -22,39 +23,42 @@
 
 
 			public function insertardatos($id,$activo,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL,$login){
-			$PROMEDIO=$V_CPU + $V_MEM + $V_DISCO;
-			$V_FINAL = $PROMEDIO / 3;
-			$sql = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
-            $sql.= "VALUES (null,'$SISTEMAOPERATIVO','$CPU ','$cache ','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL')";
-          	$resultado = mysqli_query( $this->conn, $sql );
-          	if ($resultado==TRUE) {
-				//$sqlHistorial = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
-	            //$sqlHistorial.= "VALUES (NULL,'".$login."', id='$id',SISTEMAOPERATIVO='$SISTEMAOPERATIVO',CPU='$CPU',cache='$cache',memoria='$memoria',almacenamiento='$almacenamiento',direccion='$direccion',mac='$mac',ultimo_mantenimiento='$ultimo_mantenimiento',proximo_mantenimiento='$proximo_mantenimiento', año_lanzamiento='$año_lanzamiento' ,fecha_compra='$fecha_compra',V_CPU='$V_CPU', V_MEM='$V_MEM' ,V_DISCO='$V_DISCO', V_FINAL='$V_FINAL',NOW())";
+				$PROMEDIO = $V_CPU + $V_MEM + $V_DISCO;
+				$V_FINAL = $PROMEDIO / 3;
+				$sql = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
+				$sql .= "VALUES (null,'$SISTEMAOPERATIVO','$CPU ','$cache ','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL')";
+				$resultado = mysqli_query($this->conn, $sql);
 
-            	//$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
+				//Variable del ultimo articulo
+				//echo $activo; 
 
-		        echo "<div class='alert alert-success alert-dismissible'>";
-				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-				echo "  <strong>Excelente!</strong> Se ingreso informacion del computador correctamente.";
-				echo "</div>";
+				//consulta que traiga el ultimo dato
+				$UltimoDato = "SELECT * FROM datos order by id desc limit 1";
+				$ultimo = mysqli_fetch_array(mysqli_query($this->conn, $UltimoDato));
+				$Dato = $ultimo['id']; //Ultimo Dato de caracteristicas ingresado
 
-          	}else{
-		        echo "<div class='alert alert-danger alert-dismissible'>";
-				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-				echo "  <strong>Error!</strong> ".mysqli_error($this->conn);
-				echo "</div>";
-          	}
-          	//Variable del ultimo articulo
-			//echo $activo; 
+				//Update de Articulo
+				$sql = "UPDATE `articulo` SET `id_datos`='" . $Dato . "' WHERE `articulo`.`placa` = '" . $activo . "'";
+				$resultadoU = mysqli_query($this->conn, $sql);
 
-			//consulta que traiga el ultimo dato
-			$UltimoDato = "SELECT * FROM datos order by id desc limit 1";
-			$ultimo = mysqli_fetch_array(mysqli_query( $this->conn, $UltimoDato ));
-			$Dato = $ultimo['id']; //Ultimo Dato de caracteristicas ingresado
+				if ($resultado == TRUE and $resultadoU == TRUE) {
+					//$sqlHistorial = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
+					//$sqlHistorial.= "VALUES (NULL,'".$login."', id='$id',SISTEMAOPERATIVO='$SISTEMAOPERATIVO',CPU='$CPU',cache='$cache',memoria='$memoria',almacenamiento='$almacenamiento',direccion='$direccion',mac='$mac',ultimo_mantenimiento='$ultimo_mantenimiento',proximo_mantenimiento='$proximo_mantenimiento', año_lanzamiento='$año_lanzamiento' ,fecha_compra='$fecha_compra',V_CPU='$V_CPU', V_MEM='$V_MEM' ,V_DISCO='$V_DISCO', V_FINAL='$V_FINAL',NOW())";
 
-			//Update de Articulo
-			$sql = "UPDATE `articulo` SET `id_datos`='".$Dato."' WHERE `articulo`.`placa` = '".$activo."'";
-			$resultado = mysqli_query( $this->conn, $sql );
+					//$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
+					// header('Location: articulo.php');
+					echo "<div class='alert alert-success alert-dismissible'>";
+					echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+					echo "  <strong>Excelente!</strong> Se ingreso informacion del computador correctamente.";
+					echo "</div>";
+
+				} else {
+					// header('Location: articulo.php');
+					echo "<div class='alert alert-danger alert-dismissible'>";
+					echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+					echo "  <strong>Error!</strong> " . mysqli_error($this->conn);
+					echo "</div>";
+				}
 		}
 
 		public function modificarDatos($id,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL,$login){
@@ -80,7 +84,39 @@
 				echo "</div>";
           	}
 		}
-
 		
+		function exportCaracDatabase() {
+
+	    	$sql ="SELECT * FROM `articulo` INNER JOIN datos on datos.id=articulo.id_datos";
+	    	$Result = mysqli_query( $this->conn, $sql );
+
+	    	$productResult = array();
+
+			while( $rows = mysqli_fetch_assoc($Result) ) {
+				$productResult[] = $rows;
+			}
+
+			$filename = "caracteristicas.xls";
+
+			header("Content-Type: application/vnd.ms-excel");
+
+			header("Content-Disposition: attachment; filename=".$filename);
+
+			$mostrar_columnas = false;
+
+			foreach($productResult as $libro) {
+
+				if(!$mostrar_columnas) {
+
+					echo implode("\t", array_keys($libro)) . "\n";
+
+					$mostrar_columnas = true;
+
+				}
+
+				echo implode("\t", array_values($libro)) . "\n";
+
+			}
+	    }  
 	}
  ?>

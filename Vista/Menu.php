@@ -23,6 +23,7 @@
           <ul class="dropdown-menu">
             <li><a href="articulo.php">Ingresar Articulo</a></li>
             <li><a href="modificarArticulo.php">Modificar Articulo</a></li>
+           
           </ul>
         </li>
         <li class="dropdown">

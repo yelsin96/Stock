@@ -53,7 +53,7 @@
                 ?>
                 <!-- <div class="users-form"> -->
                     <h1> Crear informacion del PC</h1>
-                    <form action="index1.php" method="POST">
+                    <form action="ingresarCaracteristicas.php" method="POST">
                         <div class="form-group col-md-4">
                             <label>CPU-PROCESADOR *</label>
                             <input type="text" name="CPU" for="CPU" placeholder="Ej: intel core i5-12600k" class="form-control" >
@@ -124,7 +124,8 @@
             </div>
     <?php 
             }else{
-                echo "<a href='articulo.php'><button class='btn btn-primary'>Ir a ingresar Articulo</button></a>";
+                echo "No hay Activo seleccionado <br>";
+                echo "<a href='articulosReport.php'><button class='btn btn-primary'>Volver</button></a>";
             }    
         } 
     ?>

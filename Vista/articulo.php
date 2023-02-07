@@ -11,12 +11,11 @@
     <div class="container">
         <?php 
             session_start();
-     
+    
             if(!isset($_SESSION['user_id'])){
                 header('Location: login.php');
                 exit;
             } else {
-
             include "Menu.php";
             include '../Controlador/controladorArticulo.php';
             $articulo = new articulo;
@@ -33,7 +32,6 @@
                 }
             }
          ?>
-        
         <div class="page-header">
             <h1>Ingresar Articulo Nuevo</h1>
         </div>
@@ -66,13 +64,6 @@
                 <input type="submit" name="boton" value="Insertar" class="btn btn-primary">
             </div>
         </form>
-
-        
-        
-    
-
-
-
     </div>
     <?php  } ?>
     <script type="text/javascript" src='js/jquery.min.js'></script>

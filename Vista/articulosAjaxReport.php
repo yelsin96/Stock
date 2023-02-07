@@ -18,7 +18,6 @@ if($action == 'ajax'){
 	$adjacents  = 4; //espacio entre páginas después del número de adyacentes
 	$offset = ($page - 1) * $per_page;
 	
-	
 	$search=array("query"=>$query,"location"=>$location,"status"=>$status,"per_page"=>$per_page,"offset"=>$offset);
 	//consulta principal para recuperar los datos
 	$datos=$database->getData($tables,$campos,$search);
@@ -39,17 +38,17 @@ if($action == 'ajax'){
 		?>
 	 <table class="table table-striped table-hover ">	
 		<thead>
-            <tr>
-                <!--<th>#</th>-->
-                <th>Placa</th>
-                <th>Descripcion</th>
+			<tr>
+				<!--<th>#</th>-->
+				<th>Placa</th>
+				<th>Descripcion</th>
 				<th>Tipo</th>
 				<th>Ubicacion</th>						
-                <th>Observacion</th>
+				<th>Observacion</th>
 				<th></th>						
-            </tr>
-        </thead>
-        <tbody>
+			</tr>
+		</thead>
+		<tbody>
 		<?php
 		$finales=0;
 		/*$hola=mysqli_fetch_array($datos);
@@ -69,12 +68,40 @@ if($action == 'ajax'){
 				}*/
 			?>
 		<tr>
-		    <!--<td><?=$row['id'];?></td>-->
-		    <td><img src="img/1.png" class="avatar" alt="Avatar" style="height: 18px; width: 18px;"> <?=$row['placa'];?></td>
+			<!--<td><?=$row['id'];?></td>-->
+			<td><img src="img/1.png" class="avatar" alt="Avatar" style="height: 18px; width: 18px;"> <?=$row['placa'];?></td>
 			<td><?=$row['descripcion'];?></td>
 			<td><?=$row['tipo'];?></td>                  
 			<td><?=$row['ubicacion'];?>-<?=$row['Sucursal'];?></td>
-			<td><a href='mirarCaracteristica.php'><input type='button' value='modificar datos' class="btn btn-primary"></a></td>
+			<td></td>
+
+			<td>
+			<?php
+			if($row['descripcion'] == 'torre' ){
+				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg style='color:blue'  xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
+				</svg>  </a>";
+			} if ($row['descripcion'] == 'TORRE' ) {
+				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
+				</svg>  </a>";
+			}
+			if ($row['descripcion'] == 'CPU' ) {
+				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
+				</svg>  </a>";
+			}if ($row['descripcion'] == 'TAT' ) {
+				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
+				</svg>  </a>";
+			}if ($row['descripcion'] == 'TIENDA_TAT ' ) {
+				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
+				</svg>  </a>";
+			}
+			;?>
+			</td>
+			
 			<!--<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>Icono para redirigir-->
 		</tr>
 			<?php
@@ -87,15 +114,14 @@ if($action == 'ajax'){
 			<?php 
 				$inicios=$offset+1;
 				$finales+=$inicios -1;
-				echo '<div class="hint-text">Mostrando '.$inicios.' al '.$finales.' de '.$numrows.' registros</div>';
-				
+			echo '<div class="hint-text">Mostrando ' . $inicios . ' al ' . $finales . ' de ' . $numrows . ' registros</div>';
 				
 				include '../Controlador/pagination.php'; //include pagination class
 				$pagination=new Pagination($page, $total_pages, $adjacents);
 				echo $pagination->paginate();
  
 			?>
-        </div>
+		</div>
 	<?php
 	}
 }

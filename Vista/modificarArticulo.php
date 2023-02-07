@@ -27,8 +27,8 @@
                     $tipo = $_POST['tipo'];
                     $ubicacion = $_POST['ubicacion'];
                     $observacion = $_POST['observacion'];
-                    $datos = $_POST['id_datos'];
-                    $modificarArticulo = $articulo->modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$datos,$_SESSION['user_id']);
+                    $id_datos = $_POST['id_datos'];
+                    $modificarArticulo = $articulo->modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$id_datos,$_SESSION['user_id']);
                 }
                 if ($accion == "Consultar") {
                     $placaM = $_POST['placaM'];
@@ -94,20 +94,17 @@
                 <label>Observacion:</label>
                 <?php echo "<input class='form-control' value='".$consultaM["observacion"]."' name='observacion' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>";  ?>
             </div>
-            <div class="form-group">
-                <label>datos:</label>
-                <?php echo "<input class='form-control' value='".$consultaM["id_datos"]."' name='id_datos' type='int' >"  ?>
-            </div>
+            
+            <?php echo "<input class='form-control' value='".$consultaM["id_datos"]."' name='id_datos' type='hidden' >"  ?>
+            
             <div class="form-group">
                 <input type="submit" name="boton" value="Modificar" class="btn btn-primary">
             </div>
 
-            <div class="form-group">
-            <a href='update.php'><input type='button'  value='modificar datos' class="btn btn-primary"></a>
-            </div>
-
-            
+            <?php echo "<a href='update.php?id_datos=".$consultaM["id_datos"]."'><input type='button' class='btn btn-primary' value='Modificar Caracteristicas'></a>"   ?>
+        
         </form>
+        
     
         <?php 
             }
