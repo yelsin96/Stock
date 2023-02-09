@@ -11,7 +11,7 @@ if($action == 'ajax'){
 	$status=strip_tags($_REQUEST['status']);
 	$per_page=intval($_REQUEST['per_page']);
 	$tables="articulo as art";
-	$campos="art.placa,art.descripcion,tip.descripcion tipo,ub.descripcion ubicacion,ub.id Sucursal,art.observacion";
+	$campos="art.placa,art.descripcion,tip.descripcion tipo,ub.descripcion ubicacion,ub.id Sucursal,art.observacion,art.id_datos";
 	//$campos="*";
 	//Variables de paginación
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -77,29 +77,12 @@ if($action == 'ajax'){
 
 			<td>
 			<?php
-			if($row['descripcion'] == 'torre' ){
+			if($row['id_datos'] <> NULL ){
 				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg style='color:blue'  xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
 				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
 				</svg>  </a>";
-			} if ($row['descripcion'] == 'TORRE' ) {
-				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
-				</svg>  </a>";
-			}
-			if ($row['descripcion'] == 'CPU' ) {
-				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
-				</svg>  </a>";
-			}if ($row['descripcion'] == 'TAT' ) {
-				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
-				</svg>  </a>";
-			}if ($row['descripcion'] == 'TIENDA_TAT ' ) {
-				echo "<a href='mirarCaracteristica.php?placa=" . $row["placa"] . "' ><svg  style='color:blue' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-				 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
-				</svg>  </a>";
-			}
-			;?>
+			} 
+			?>
 			</td>
 			
 			<!--<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>Icono para redirigir-->

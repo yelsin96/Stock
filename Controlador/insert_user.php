@@ -87,7 +87,12 @@
 		
 		function exportCaracDatabase() {
 
-	    	$sql ="SELECT * FROM `articulo` INNER JOIN datos on datos.id=articulo.id_datos";
+			$sql = "SELECT a.placa, a.descripcion, t.descripcion Tipo,  u.id Sucursal, u.descripcion PDV, a.observacion, SISTEMAOPERATIVO, CPU, cache, memoria RAM, almacenamiento, direccion IP,mac, ultimo_mantenimiento, proximo_mantenimiento, año_lanzamiento, fecha_compra, V_CPU, V_MEM, V_DISCO, V_FINAL ";
+			$sql.= "FROM `articulo` a ";
+			$sql.= "INNER JOIN datos on datos.id=a.id_datos ";
+			$sql.= "INNER JOIN tipo_Articulo t on t.id=a.tipo_id ";
+			$sql.= "INNER JOIN ubicacion u on u.id=a.ubicacion_id";
+			
 	    	$Result = mysqli_query( $this->conn, $sql );
 
 	    	$productResult = array();

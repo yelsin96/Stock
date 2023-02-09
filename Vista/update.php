@@ -70,93 +70,99 @@
                         <div class="col-sm-4">
                             <h2>Modificar Caracteristicas del PC</h2>
                         </div>
-
                     </div>
                 </div>
                 <?php if (empty($consultaM)) { ?>
-                    <div class="form-group">
-                            <a href='modificarArticulo.php'><input type='button' value='modificar articulo' class="btn btn-primary"></a>
-                        </div>
+                    <div class="form-group row">
+                        <a href='modificarArticulo.php'><button class="btn btn-primary">Modificar articulo</button></a>
+                        <a href='articulosReport.php'><button class='btn btn-primary'>Reporte Articulos</button></a>
+                        <a href='articulo.php'><button class='btn btn-primary'>Ingresar Articulos</button></a>
+                    </div>
                 <?php } ?>
                 <?php if (!empty($consultaM)) { ?>
+                <div class="row">
                     <form action="update.php" method="post" name="formDatos">
-                        <div class="form-group">
-                            <label>id:</label>
+                        <div class="form-group col-md-2">
+                            <label>ID *</label>
                             <?php echo "<input class='form-control' style='display:none;' value='" . $consultaM["id"] . "' name='id' type='text'>" ?>
                             <?php echo "<input class='form-control' disabled value='" . $consultaM["id"] . "' type='text'>" ?>
-
                         </div>
-                        <div class="form-group">
-                            <label>SISTEMA OPERATIVO:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["SISTEMAOPERATIVO"] . "' name='SISTEMAOPERATIVO' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{1,40}' required> "; ?>
-                        </div>
-
-                        <div class="form-group">
-                            <label>CPU:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["CPU"] . "' name='CPU' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-3">
+                            <label>SISTEMA OPERATIVO *</label>
+                            <input class='form-control' value="<?php echo $consultaM["SISTEMAOPERATIVO"] ?>" name='SISTEMAOPERATIVO' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9]{1,40}' required>
                         </div>
 
-                        <div class="form-group">
-                            <label>cache:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["cache"] . "' name='cache' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-2">
+                            <label>PROCESADOR *</label>
+                            <input class='form-control' value="<?php echo $consultaM["CPU"] ?>" name='CPU' type='text' required>
                         </div>
 
-                        <div class="form-group">
-                            <label>memoria:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["memoria"] . "' name='memoria' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-2">
+                            <label>CACHE *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["cache"] . "' name='cache' type='text' pattern='[0-9]{1,10}' required>"; ?>
                         </div>
-                        <div class="form-group">
-                            <label>almacenamiento:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["almacenamiento"] . "' name='almacenamiento' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+
+                        <div class="form-group col-md-3">
+                            <label>MEMORIA RAM *</label>
+                            <?php echo "<input class='form-control' value='".$consultaM["memoria"]."' name='memoria' type='text' pattern='^[0-9]{1,3}(\.[0-9]{0,2})?$' required>"; ?>
                         </div>
-                        <div class="form-group">
-                            <label>direccion:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["direccion"] . "' name='direccion' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-3">
+                            <label>Seleccione Almacenamiento *</label>
+                            <select class="form-control" name="almacenamiento" for="almacenamiento" required>
+                                <option value="<?php echo $consultaM["almacenamiento"] ?>" selected><?php echo $consultaM["almacenamiento"] ?></option>
+                                <option value="SSD">SSD</option>
+                                <option value="MECANICO">MECANICO</option>
+                                <option value="M.2">M.2</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label>mac:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["mac"] . "' name='mac' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-2">
+                            <label>IP *</label>
+                            <input class='form-control' value="<?php echo $consultaM["direccion"] ?>" name='direccion' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,50}' required>
                         </div>
-                        <div class="form-group">
-                            <label>ultimo mantenimiento:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["ultimo_mantenimiento"] . "' name='ultimo_mantenimiento' type='date' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-3">
+                            <label>MAC *</label>
+                            <input class='form-control' value="<?php echo $consultaM["mac"] ?>" name='mac' type='text' required>
                         </div>
-                        <div class="form-group">
-                            <label>proximo mantenimiento:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["proximo_mantenimiento"] . "' name='proximo_mantenimiento' type='date' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-4">
+                            <label>ULTIMO MANTENIMIENTO *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["ultimo_mantenimiento"] . "' name='ultimo_mantenimiento' type='date' required>"; ?>
                         </div>
-                        <div class="form-group">
-                            <label>año de lanzamiento:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["año_lanzamiento"] . "' name='año_lanzamiento' type='date' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-4">
+                            <label>PROXIMO MANTENIMIENTO *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["proximo_mantenimiento"] . "' name='proximo_mantenimiento' type='date' required>"; ?>
                         </div>
-                        <div class="form-group">
-                            <label>fecha de compra:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["fecha_compra"] . "' name='fecha_compra' type='date' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-4">
+                            <label>AÑO LANZAMIENTO *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["año_lanzamiento"] . "' name='año_lanzamiento' type='date' required>"; ?>
                         </div>
-                        <div class="form-group">
-                            <label>V_CPU:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["V_CPU"] . "' name='V_CPU' type='int' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-4">
+                            <label>FECHA COMPRA *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["fecha_compra"] . "' name='fecha_compra' type='date' required>"; ?>
                         </div>
-                        <div class="form-group">
-                            <label>V_MEM:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["V_MEM"] . "' name='V_MEM' type='int' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-4">
+                            <label>VALORACION CPU *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["V_CPU"] . "' name='V_CPU' type='text' pattern='[1-5]{1}' required>"; ?>
                         </div>
-                        <div class="form-group">
-                            <label>V_DISCO:</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["V_DISCO"] . "' name='V_DISCO' type='int' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,120}'>"; ?>
+                        <div class="form-group col-md-4">
+                            <label>VALORACION RAM *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["V_MEM"] . "' name='V_MEM' type='text' pattern='[1-5]{1}' required>"; ?>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>VALORACION DISCO *</label>
+                            <?php echo "<input class='form-control' value='" . $consultaM["V_DISCO"] . "' name='V_DISCO' type='text' pattern='[1-5]{1}' required>"; ?>
                         </div>
 
                         <div class="form-group">
                             <input type="submit" name="boton" value="Modificar" class="btn btn-primary">
                         </div>
                     </form>
-
+                </div>
                 <?php
                 }
         }
         ?>
-
-        </div>
+            </div>
+    </div>
 
         <script type="text/javascript" src='js/jquery.min.js'></script>
         <script type="text/javascript" src='js/bootstrap.min.js'></script>

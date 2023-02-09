@@ -38,6 +38,9 @@
 						<a href="exportExcelArticulos.php">
 							<button type="button" class="btn btn-success" style="margin-top: 0px !important;">Informe Excel</button>
 						</a>
+						<a href="exportCaracteristicas.php">
+							<button type="button" class="btn btn-success" style="margin-top: 0px !important;"> informe excel caracteristicas</button>
+						</a>
 					</div>	
                 </div>
             </div>

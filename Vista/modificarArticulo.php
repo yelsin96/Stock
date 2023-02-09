@@ -100,9 +100,15 @@
             <div class="form-group">
                 <input type="submit" name="boton" value="Modificar" class="btn btn-primary">
             </div>
-
-            <?php echo "<a href='update.php?id_datos=".$consultaM["id_datos"]."'><input type='button' class='btn btn-primary' value='Modificar Caracteristicas'></a>"   ?>
-        
+                   
+            <?php 
+			if($consultaM["id_datos"] != NULL ){
+				echo "<a href='update.php?id_datos=".$consultaM["id_datos"]."'><input type='button' class='btn btn-primary' value='Modificar Caracteristicas'></a>" ;
+			}else{
+                echo "<a href='ingresarCaracteristicas.php?activo=".$consultaM["placa"]."'><input type='button' class='btn btn-primary' value='Insertar Caracteristicas'></a>" ;
+            }
+            ?>
+           
         </form>
         
     

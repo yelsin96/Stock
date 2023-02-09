@@ -44,7 +44,7 @@
 				echo "<div class='alert alert-info alert-dismissible'>";
 				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
 				echo "	<strong>Desea ingresar carecteristicas del equipo ".$placa." !  </strong>";
-				echo "	<a href='index1.php?activo=".$placa."'><input type='button' class='btn btn-primary' value='insertar'></a> ";
+				echo "	<a href='ingresarCaracteristicas.php?activo=".$placa."'><input type='button' class='btn btn-primary' value='insertar'></a> ";
 				echo "</div>";
 
           	}else{
