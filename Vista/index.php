@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Stock</title> 
+    <title>Stock</title>
     <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/adminlte.min.css"> -->
 </head>
+
 <body>
-	<div class="container">
-		<?php 
+    <div class="container-fluid">
+        <?php 
 
 			session_start();
 	 
@@ -18,60 +21,67 @@
 			} else {
 				include "Menu.php"; 
 		?>
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">	
-				<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-			      <!-- Carousel indicators -->
-			      <ol class="carousel-indicators">
-			        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			        <li data-target="#myCarousel" data-slide-to="1"></li>
-			        <li data-target="#myCarousel" data-slide-to="2"></li>
-			      </ol>
-			      <!-- Carousel items -->
-			      <div class="carousel-inner">
-			        <div class="item active">
-			          <img src="img/banner1.jpg" class="img-fluid" alt="First Slide">
-			          <div class="carousel-caption">
-			            <h3>Título de la primera diapositiva</h3>
-			            <p>Contenido de la diapositiva</p>
-			          </div>
-			        </div>
-			        <div class="item">
-			          <img src="img/banner2.jpg" alt="Second Slide">
-			          <div class="carousel-caption">
-			            <h3>Título de la segunda diapositiva</h3>
-			            <p>Contenido de la diapositiva</p>
-			          </div>
-			        </div>
-			        <div class="item">
-			          <img src="img/banner3.jpg" alt="Third Slide">
-			          <div class="carousel-caption">
-			            <h3>Título de la tercera diapositiva</h3>
-			            <p>Contenido de la diapositiva</p>
-			          </div>
-			        </div>
-			      </div>
-			      <!-- Carousel nav -->
-			      <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-			      <span class="glyphicon glyphicon-chevron-left"></span>
-			      </a>
-			      <a class="carousel-control right" href="#myCarousel" data-slide="next">
-			      <span class="glyphicon glyphicon-chevron-right"></span>
-			      </a>
-			    </div>
-	    	</div>
-	    	<div class="col-md-2"></div>
-	    </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <?php include "donutChart.php"; ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?php include "equiposCambio.php"; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <?php include "carrusel.php"; ?>
+            </div>
+        </div>
 
-		
-	</div>
-	
-	<script type="text/javascript" src='js/jquery.min.js'></script>
-	<script type="text/javascript" src='js/bootstrap.min.js'></script>
+    </div>
 
-	<?php 
+    <script type="text/javascript" src='js/jquery.min.js'></script>
+    <script type="text/javascript" src='js/bootstrap.min.js'></script>
+    <script src="js/chart.js/Chart.min.js"></script>
+    <script>
+    $(function() {
+
+        //-------------
+        //- DONUT CHART -
+        //-------------
+        let totalSistemas = document.getElementById("totalSistemas").value;
+        let arraySistemas = [];
+        let arrayCantidadSistema = [];
+        for (let contador = 0; contador <= totalSistemas; contador++) {
+            arraySistemas.push(document.getElementById("sistema"+contador).value);
+            arrayCantidadSistema.push(document.getElementById("cantidadSistema"+contador).value);
+            console.log(arraySistemas);
+            console.log(arrayCantidadSistema);
+        }
+
+        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+        var donutData = {
+            labels: arraySistemas,
+            datasets: [{
+                data: arrayCantidadSistema,
+                backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+            }]
+        }
+        var donutOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+
+        new Chart(donutChartCanvas, {
+            type: 'doughnut',
+            data: donutData,
+            options: donutOptions
+        })
+
+    })
+    </script>
+    <?php 
 	}
 	 ?>
 </body>
+
 </html>

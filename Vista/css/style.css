@@ -233,7 +233,7 @@
     }
 
     .session{
-    	margin-left: 100% !important;
+    	/* margin-left: 100% !important; */
     	color: white !important;
     	padding: 5px 15px !important;
     }

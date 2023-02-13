@@ -13,6 +13,22 @@
             $resultadoDatos = mysqli_query( $this->conn, $consultarDatos );
 			return $resultadoDatos;
 		}
+
+		public function consultarCountSistemaOperativo(){
+			$consultarDatos = "SELECT `SISTEMAOPERATIVO`, count(`SISTEMAOPERATIVO`) CANTIDAD FROM `datos` GROUP by `SISTEMAOPERATIVO`;";
+            $resultadoDatos = mysqli_query( $this->conn, $consultarDatos );
+			return $resultadoDatos;
+		}
+
+		public function consultarEquiposCambio(){
+			$consultarDatos = "SELECT u.descripcion,a.placa, d.CPU,d.memoria,d.V_FINAL ";
+			$consultarDatos.= "FROM `datos` d ";
+			$consultarDatos.= "INNER join articulo a on a.id_datos =d.id ";
+			$consultarDatos.= "INNER join ubicacion u on a.ubicacion_id= u.id ";
+			$consultarDatos.= "order by `V_FINAL` limit 3";
+            $resultadoDatos = mysqli_query( $this->conn, $consultarDatos );
+			return $resultadoDatos;
+		}
 		
 
 		public function mirarDatos($placaM){

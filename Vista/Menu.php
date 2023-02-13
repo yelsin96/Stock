@@ -51,7 +51,7 @@
           </ul>
         </li>
       </ul>
-      <div class="navbar-header">
+      <div class="navbar-header navbar-right">
         <div class="navbar-brand session">
           <?php echo $_SESSION['user_id'] ?>
           <a href="cerrarsession.php">
