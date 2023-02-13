@@ -105,15 +105,15 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>VALORACION CPU *</label>
-                            <input type="text" name="V_CPU" for="V_CPU" placeholder="De 1-5" class="form-control" pattern="[1-5]{1}" required>
+                            <input type="text" name="V_CPU" for="V_CPU" placeholder="De 1-5" class="form-control" pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>
                         </div>
                         <div class="form-group col-md-4">
                             <label>VALORACION RAM *</label>
-                            <input type="text" name="V_MEM" for="V_MEM" placeholder="De 1-5" class="form-control" pattern="[1-5]{1}" required>
+                            <input type="text" name="V_MEM" for="V_MEM" placeholder="De 1-5" class="form-control" pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>
                         </div>
                         <div class="form-group col-md-4">
                             <label>VALORACION DISCO *</label>
-                            <input type="text" name="V_DISCO" for="V_DISCO" placeholder="De 1-5" class="form-control" pattern="[1-5]{1}" required>
+                            <input type="text" name="V_DISCO" for="V_DISCO" placeholder="De 1-5" class="form-control" pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>
                         </div>                   
                         <input type="hidden" name="activo" value="<?php echo $activo ?>">
                         <div class="form-group col-md-2">

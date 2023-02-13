@@ -141,15 +141,15 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>VALORACION CPU *</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["V_CPU"] . "' name='V_CPU' type='text' pattern='[1-5]{1}' required>"; ?>
+                            <?php echo "<input class='form-control' value='" . $consultaM["V_CPU"] . "' name='V_CPU' type='text' pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>"; ?>
                         </div>
                         <div class="form-group col-md-4">
                             <label>VALORACION RAM *</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["V_MEM"] . "' name='V_MEM' type='text' pattern='[1-5]{1}' required>"; ?>
+                            <?php echo "<input class='form-control' value='" . $consultaM["V_MEM"] . "' name='V_MEM' type='text' pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>"; ?>
                         </div>
                         <div class="form-group col-md-4">
                             <label>VALORACION DISCO *</label>
-                            <?php echo "<input class='form-control' value='" . $consultaM["V_DISCO"] . "' name='V_DISCO' type='text' pattern='[1-5]{1}' required>"; ?>
+                            <?php echo "<input class='form-control' value='" . $consultaM["V_DISCO"] . "' name='V_DISCO' type='text' pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>"; ?>
                         </div>
 
                         <div class="form-group">

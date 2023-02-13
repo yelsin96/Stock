@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-02-2023 a las 19:43:46
+-- Tiempo de generación: 13-02-2023 a las 14:41:47
 -- Versión del servidor: 5.5.33-MariaDB-log
 -- Versión de PHP: 5.4.20
 
@@ -49,6 +49,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M- 5879', 'LECTORES FIVE', 1, 39885, 'EL LECTOR SE ENCUENTRA EN EQUIPO DE PRUEBA DE APLICACIONES ', NULL),
 ('M-0229', 'BATERIA', 2, 9008, 'MALA', NULL),
 ('M-0326', 'UPS', 1, 39650, '', NULL),
+('M-0900', 'Torre', 1, 40189, '9/02/23', 33),
 ('M-1094', 'TECLADO', 1, 39799, '', NULL),
 ('M-1119', 'TECLADO', 2, 39822, '', NULL),
 ('M-1132', 'TECLADO', 2, 9013, 'MALO', NULL),
@@ -70,6 +71,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-1706', 'IMPRESORA TMU', 1, 39884, '', NULL),
 ('M-1707', 'IMPRESORA LPT', 1, 9015, '', NULL),
 ('M-1730', 'RADIO', 1, 9008, '', NULL),
+('M-1757', 'Torre', 1, 39803, '9/02/23', 1),
 ('M-1987', 'REGULADOR', 1, 9015, '', NULL),
 ('M-1993', 'UPS', 1, 9015, '', NULL),
 ('M-2028', 'MONITOR', 1, 9015, '', NULL),
@@ -80,6 +82,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-229', 'BATERIA', 1, 9015, '', NULL),
 ('M-2333', 'TORRE', 1, 9008, 'p65 110605 - de baja ', NULL),
 ('M-2353', 'SWITCH', 1, 10004, '', NULL),
+('M-2381', 'Torre', 1, 39813, '9/02/23', 2),
 ('M-2382', 'TORRE', 1, 9015, '', NULL),
 ('M-2385', 'UPS', 1, 9008, 'Baja', NULL),
 ('M-2387', 'UPS', 1, 9008, 'baja -  p66 109992', NULL),
@@ -98,6 +101,8 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-2608', 'IMPRESORA TMU', 1, 9015, 'MALA', NULL),
 ('M-2610', 'TORRE', 1, 39825, '', NULL),
 ('M-2611', 'MONITOR', 1, 9008, '', NULL),
+('M-2632', 'Torre', 1, 39651, '9/02/23', 3),
+('M-2634', 'Torre', 1, 39812, '9/02/23', 34),
 ('M-2687', 'TORRE', 1, 9015, 'p48 102479', NULL),
 ('M-2689', 'MONITOR', 1, 9015, '', NULL),
 ('M-2697', 'IMPRESORA TMU', 1, 9013, '', NULL),
@@ -117,6 +122,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-2912', 'IMPRESORA TMU', 1, 9008, 'REVISION', NULL),
 ('M-2915', 'IMPRESORA TMU', 1, 9013, '', NULL),
 ('M-2916', 'IMPRESORA TMU', 1, 39868, '', NULL),
+('M-2924', 'IMPRESORA TMU', 1, 9008, 'buena', NULL),
 ('M-2932', 'IMPRESORA TMU', 1, 9008, '', NULL),
 ('M-2933', 'IMPRESORA TMU', 1, 9008, 'REVISION', NULL),
 ('M-2934', 'IMPRESORA TMU', 1, 39792, '', NULL),
@@ -132,13 +138,21 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-2977', 'MONITOR', 1, 9015, 'LG', NULL),
 ('M-2983', 'MONITOR', 1, 9008, 'conteo 109188', NULL),
 ('M-2984', 'CPU', 1, 9015, '', NULL),
+('M-2985', 'Torre', 1, 39801, '9/02/23', 4),
+('M-2986', 'Torre', 1, 39800, '9/02/23', 35),
+('M-2987', 'Torre', 1, 39820, '9/02/23', 5),
+('M-2988', 'Torre', 1, 39829, '9/02/23', 6),
 ('M-3011', 'MONITOR', 1, 9008, 'REVISION', NULL),
+('M-3017', 'Torre', 1, 39871, '9/02/23', 7),
+('M-3018', 'Torre', 1, 39882, '9/02/23', 36),
+('M-3068', 'Torre', 1, 40189, '9/02/23', 68),
 ('M-3070', 'MONITOR', 1, 9015, '', NULL),
 ('M-3086', 'PAX', 1, 9015, '', NULL),
 ('M-31022', 'PAX', 1, 9013, '', NULL),
 ('M-3119', 'PAX', 1, 9015, 'entrega cenaida narvaez 103365 impresora mala', NULL),
 ('M-3132', 'IMPRESORA', 1, 9008, 'Baja', NULL),
 ('M-3138', 'TORRE', 1, 9015, 'REVISION', NULL),
+('M-3139', 'Torre', 1, 39862, '9/02/23', 8),
 ('M-3140', 'TORRE', 1, 9015, '', NULL),
 ('M-3141', 'TORRE', 1, 9008, 'baja - p18 108020', NULL),
 ('M-3159', 'TORRE', 1, 9015, '', NULL),
@@ -148,9 +162,17 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-3208', 'PAX', 1, 9015, '', NULL),
 ('M-3212', 'PAX', 1, 9008, 'Baja', NULL),
 ('M-3231', 'PAX', 1, 9015, '107146 karen martinez ', NULL),
+('M-3232', 'Torre', 1, 39854, '9/02/23', 37),
+('M-3234', 'Torre', 1, 39634, '9/02/23', 9),
 ('M-3236', 'MONITOR', 1, 9015, 'base mala 104448', NULL),
+('M-3244', 'Torre', 1, 39792, '9/02/23', 27),
+('M-3245', 'Torre', 1, 39874, '9/02/23', 10),
+('M-3248', 'Torre', 1, 39870, '9/02/23', 64),
+('M-3249', 'Torre', 1, 39881, '9/02/23', 11),
+('M-3250', 'Torre', 1, 39816, '9/02/23', 66),
 ('M-3252', 'IMPRESORA TMU', 1, 40084, '', NULL),
 ('M-3255', 'IMPRESORA TMU', 1, 39805, '', NULL),
+('M-3279', 'Torre', 1, 39858, '9/02/23', 77),
 ('M-3284', 'TORRE', 1, 9015, '', NULL),
 ('M-3294', 'PAX', 1, 9008, 'teresa muñoz 109059 - de baja', NULL),
 ('M-3309', 'PAX', 1, 9015, '', NULL),
@@ -168,7 +190,8 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-3414', 'UPS', 1, 9008, 'Baja', NULL),
 ('M-3439', 'IMPRESORA', 1, 9008, 'Baja', NULL),
 ('M-3448', 'CAMARA', 1, 9008, '', NULL),
-('M-3478', 'IMPRESORA TMU', 1, 9008, 'REVISION', NULL),
+('M-3478', 'IMPRESORA TMU', 1, 39878, 'REVISION', NULL),
+('M-3481', 'Torre', 1, 39861, '9/02/23', 38),
 ('M-3484', 'UPS', 1, 39878, '', NULL),
 ('M-3486', 'IMPRESORA TMU', 1, 39824, '', NULL),
 ('M-3488', 'UPS', 1, 9015, 'REVISION', NULL),
@@ -188,21 +211,27 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-3956', 'MONITOR', 1, 39825, '', NULL),
 ('M-3958', 'IMPRESORA TMU', 1, 39811, 'p17 108735', NULL),
 ('M-3964', 'IMPRESORA', 1, 39806, '', NULL),
+('M-3966', 'Torre', 1, 39825, '9/02/23', 39),
 ('M-3967', 'CPU', 1, 43706, '', NULL),
 ('M-3969', 'TORRE', 1, 9013, 'REVISION', NULL),
+('M-3970', 'Torre', 1, 39807, '9/02/23', 12),
+('M-3971', 'Torre', 1, 39647, '9/02/23', 40),
 ('M-3976', 'TORRE', 1, 9015, '', NULL),
 ('M-3988', 'NVR', 1, 9008, 'Entrega Diego Giraldo chasis, la board quedo instalada para guardas.', NULL),
 ('M-3992', 'CAMARA', 1, 9008, '', NULL),
 ('M-4006', 'IMPRESORA BLUETOOTH ', 1, 9015, '', NULL),
 ('M-4034', 'MONITOR', 1, 39864, '', NULL),
+('M-4035', 'Torre', 1, 39868, '9/02/23', 41),
 ('M-4037', 'TORRE', 1, 9008, 'Baja', NULL),
-('M-4038', 'CPU', 1, 39851, '', NULL),
+('M-4038', 'CPU', 1, 39851, '9/02/23', 13),
+('M-4039', 'Torre', 1, 39852, '9/02/23', 42),
 ('M-4044', 'RADIO', 1, 9008, '', NULL),
 ('M-4045', 'Nano loco m2', 1, 9008, '', NULL),
 ('M-4047', 'PORTATIL', 1, 9020, 'ACER - CUMPLIMIENTO', NULL),
 ('M-4053', 'BATERIA', 1, 9008, 'Baja', NULL),
 ('M-4054', 'TORRE', 1, 9015, '', NULL),
 ('M-4056', 'TORRE', 1, 9008, 'REVISION - 112271', NULL),
+('M-4057', 'Torre', 1, 39641, '9/02/23', 43),
 ('M-4062', 'IMPRESORA USB', 1, 43706, '', NULL),
 ('M-4070', 'NVR', 1, 9008, '', NULL),
 ('M-4075', 'NVR', 1, 9008, '', NULL),
@@ -212,15 +241,19 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-4102', 'UPS', 1, 9008, 'Baja', NULL),
 ('M-4103', 'UPS', 1, 9008, '', NULL),
 ('M-4104', 'RADIO', 1, 39650, '', NULL),
+('M-4106', 'Torre', 1, 39828, '9/02/23', 44),
+('M-4107', 'Torre', 1, 39815, '9/02/23', 45),
 ('M-4129', 'BATERIA', 1, 9015, '', NULL),
 ('M-4140', 'IMPRESORA TMU', 1, 39797, '', NULL),
+('M-4142', 'Torre', 1, 39814, '9/02/23', 46),
 ('M-4143', 'TORRE', 1, 9013, 'SE REALIZA CAMBIO POR SOLICITUD DEL JEFE DE TECNOLOGIA', NULL),
-('M-4145', 'TORRE', 1, 39811, '', NULL),
+('M-4145', 'TORRE', 1, 39811, '9/02/23', 14),
 ('M-4187', 'IMPRESORA BLUETOOTH ', 1, 9015, '', NULL),
 ('M-4193', 'IMPRESORA BLUETOOTH ', 1, 9020, '', NULL),
 ('M-4198', 'IMPRESORA BLUETOOTH ', 1, 10004, 'REVISION', NULL),
 ('M-4221', 'REGULADOR', 1, 39855, '', NULL),
 ('M-4230', 'IMPRESORA TMU', 1, 39853, 'REVISION', NULL),
+('M-4244', 'Torre', 1, 39788, '9/02/23', 47),
 ('M-4249', 'IMPRESORA TMU', 1, 40189, '', NULL),
 ('M-4252', 'IMPRESORA TMU', 1, 9008, 'p18 108020', NULL),
 ('M-4261', 'RADIO', 1, 9008, '', NULL),
@@ -228,6 +261,9 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-4287', 'LECTOR BIOMETRICO', 1, 9014, '', NULL),
 ('M-4309', 'LECTOR BIOMETRICO', 1, 43706, '', NULL),
 ('M-4329', 'NVR', 1, 39879, '', NULL),
+('M-4334', 'Torre', 1, 39890, '9/02/23', 48),
+('M-4339', 'Torre', 1, 39808, '9/02/23', 49),
+('M-4340', 'Torre', 1, 39886, '9/02/23', 30),
 ('M-4354', 'PORTATIL', 1, 9020, '', NULL),
 ('M-4359', 'BATERIA', 1, 39871, '', NULL),
 ('M-4366', 'BATERIA', 1, 9015, '', NULL),
@@ -257,8 +293,10 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-4537', 'LECTOR DE BARRAS', 1, 9014, '', NULL),
 ('M-4540', 'LECTOR BARRAS 2D', 1, 9011, '', NULL),
 ('M-4542', 'PORTATIL', 1, 9020, '', NULL),
+('M-4553', 'Torre', 1, 39875, '9/02/23', 15),
 ('M-4554', 'TORRE', 1, 9015, '', NULL),
-('M-4555', 'TORRE', 1, 40084, 'se retira de monitoreo 104048', NULL),
+('M-4555', 'TORRE', 1, 40084, '9/02/23', 28),
+('M-4557', 'Torre', 1, 39865, '9/02/23', 16),
 ('M-4584', 'BATERIA', 1, 39815, '', NULL),
 ('M-4585', 'BATERIA', 1, 9008, 'p08 109829', NULL),
 ('M-4586', 'BATERIA', 1, 9015, 'Mala - del p46', NULL),
@@ -288,6 +326,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-4661', 'BATERIA', 1, 9020, 'Baja', NULL),
 ('M-4668', 'PORTATIL', 1, 9008, '', NULL),
 ('M-4675', 'BATERIA', 1, 9008, 'de baja', NULL),
+('M-4682', 'Torre', 1, 39797, '9/02/23', 17),
 ('M-4683', 'TORRE', 1, 9008, '', NULL),
 ('M-4690', 'ROUTER', 1, 9008, '', NULL),
 ('M-4692', 'ROUTER', 1, 9008, '', NULL),
@@ -309,6 +348,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-4775', 'SWITCH', 1, 9008, '', NULL),
 ('M-4782', 'SWITCH', 1, 9008, '109024 p26', NULL),
 ('M-4794', 'MONITOR', 1, 9015, '', NULL),
+('M-4796', 'Torre', 1, 39837, '9/02/23', 18),
 ('M-4799', 'IMPRESORA TMU', 1, 39870, '', NULL),
 ('M-4801', 'NVR', 1, 43706, '', NULL),
 ('M-4806', 'CAMARA', 1, 39864, 'p18 108020', NULL),
@@ -327,6 +367,9 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-4926', 'MONITOR', 1, 9008, 'p18 108020', NULL),
 ('M-4927', 'MONITOR', 1, 39828, 'p01 104949', NULL),
 ('M-4930', 'MONITOR', 1, 43706, '', NULL),
+('M-4932', 'Torre', 1, 39876, '9/02/23', 50),
+('M-4933', 'Torre', 1, 39637, '9/02/23', 19),
+('M-4934', 'Torre', 1, 39822, '9/02/23', 51),
 ('M-4942', 'BATERIA', 1, 39879, '', NULL),
 ('M-4947', 'UPS', 1, 9008, 'REVISION', NULL),
 ('M-4950', 'BATERIA', 1, 39832, '', NULL),
@@ -350,6 +393,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-5128', 'LECTOR BARRAS 2D', 1, 9011, '', NULL),
 ('M-5138', 'LECTOR BARRAS 2D', 1, 9011, '', NULL),
 ('M-5141', 'LECTOR BARRAS 2D', 1, 9011, '', NULL),
+('M-5146', 'Torre', 1, 39821, '9/02/23', 52),
 ('M-5171', 'LECTOR DE BARRAS', 1, 9014, '', NULL),
 ('M-5185', 'IMPRESORA TMU', 1, 39854, '106841 p37', NULL),
 ('M-5191', 'MONITOR', 1, 39650, 'REVISION', NULL),
@@ -373,8 +417,14 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-5327', 'MONITOR', 1, 39870, 'Entrega Diego Giraldo de NVR de los guardas sede vieja', NULL),
 ('M-5329', 'MONITOR', 1, 39822, '', NULL),
 ('M-5330', 'MONITOR', 1, 39862, '', NULL),
+('M-5344', 'Torre', 1, 39831, '9/02/23', 53),
+('M-5345', 'Torre', 1, 39802, '9/02/23', 54),
+('M-5346', 'Torre', 1, 39819, '9/02/23', 55),
 ('M-5348', 'SWITCH', 1, 39805, '', NULL),
 ('M-5349', 'SWITCH', 1, 39884, 'estaba en oficina nueva, reuniones', NULL),
+('M-5442', 'Torre', 1, 39872, '9/02/23', 20),
+('M-5443', 'Torre', 1, 39873, '9/02/23', 21),
+('M-5445', 'Torre', 1, 39809, '9/02/23', 22),
 ('M-5450', 'DVR', 1, 39633, '', NULL),
 ('M-5458', 'SWITCH', 1, 39650, '', NULL),
 ('M-5460', 'SWITCH', 1, 43706, '', NULL),
@@ -400,7 +450,10 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-5539', 'MULTILECTOR FIVE', 1, 39799, '', NULL),
 ('M-5540', 'MULTILECTOR FIVE', 1, 39806, '', NULL),
 ('M-5544', 'RADIO LH 5 DUAL', 1, 40084, '', NULL),
-('M-5548', 'TORRE', 1, 39644, '', NULL),
+('M-5548', 'TORRE', 1, 39644, '9/02/23', 56),
+('M-5550', 'Torre', 1, 39864, '9/02/23', 57),
+('M-5551', 'Torre', 1, 39879, '9/02/23', 58),
+('M-5552', 'Torre', 1, 39799, '9/02/23', 23),
 ('M-5559', 'MONITOR', 1, 39633, '', NULL),
 ('M-5567', 'RADIO', 1, 9015, 'Baja', NULL),
 ('M-5568', 'NVR', 1, 9008, '', NULL),
@@ -437,7 +490,11 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-5653', 'RADIO LHG 5', 1, 9008, '', NULL),
 ('M-5657', 'BATERIA ', 1, 39862, '', NULL),
 ('M-5661', 'BATERIA', 1, 39804, '', NULL),
-('M-5667', 'TORRE', 1, 39650, '', NULL),
+('M-5667', 'TORRE', 1, 39650, '9/02/23', 59),
+('M-5670', 'Torre', 1, 39869, '9/02/23', 60),
+('M-5671', 'Torre', 1, 39818, '9/02/23', 69),
+('M-5672', 'Torre', 1, 39833, '9/02/23', 24),
+('M-5673', 'Torre', 1, 39857, '9/02/23', 61),
 ('M-5675', 'PDA SUNMI V2', 1, 39911, '', NULL),
 ('M-5677', 'PDA SUNMI V2', 1, 9015, 'MALO', NULL),
 ('M-5680', 'PDA CS10', 1, 39787, '', NULL),
@@ -493,8 +550,11 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-5760', 'BATERIA', 1, 39815, '', NULL),
 ('M-5761', 'RACK DE PISO ABIERTO', 1, 9008, '', NULL),
 ('M-5762', 'UPS', 1, 9000, '', NULL),
-('M-5766', 'CPU', 1, 39853, '', NULL),
-('M-5771', 'TORRE', 1, 39866, '', NULL),
+('M-5766', 'CPU', 1, 39853, '9/02/23', 62),
+('M-5767', 'Torre', 1, 39855, '9/02/23', 25),
+('M-5768', 'Torre', 1, 39804, '9/02/23', 26),
+('M-5769', 'Torre', 1, 39832, '9/02/23', 65),
+('M-5771', 'TORRE', 1, 39866, '9/02/23', 63),
 ('M-5772', 'MONITOR', 1, 39824, '', NULL),
 ('M-5773', 'MONITOR', 1, 39837, '', NULL),
 ('M-5775', 'MONITOR', 1, 39886, '', NULL),
@@ -537,10 +597,10 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-5888', 'MONITOR', 1, 10004, '', NULL),
 ('M-5889', 'MONITOR', 1, 10004, '', NULL),
 ('M-5890', 'TORRE', 1, 9008, '', NULL),
-('M-5891', 'TORRE', 1, 39805, '', NULL),
-('M-5892', 'TORRE', 1, 39884, '', NULL),
+('M-5891', 'TORRE', 1, 39805, '9/02/23', 29),
+('M-5892', 'TORRE', 1, 39884, '9/02/23', 31),
 ('M-5893', 'TORRE', 1, 39886, '', NULL),
-('M-5894', 'TORRE', 1, 39810, '', NULL),
+('M-5894', 'TORRE', 1, 39810, '9/02/23', 70),
 ('M-5896', 'SWITCH', 1, 39880, '', NULL),
 ('M-5897', 'SWITCH', 1, 9006, '', NULL),
 ('M-5898', 'SWITCH', 1, 39855, '', NULL),
@@ -565,7 +625,7 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-5923', 'LECTOR DE BARRAS', 1, 9011, '', NULL),
 ('M-594', 'TRANSFORMADOR', 1, 9015, '', NULL),
 ('M-5940', 'TORRE', 1, 9008, '', NULL),
-('M-5941', 'TORRE', 1, 39878, '', NULL),
+('M-5941', 'TORRE', 1, 39878, '9/02/23', 67),
 ('M-6030', 'TORRE', 1, 10004, '', NULL),
 ('M-6082', 'TORRE', 1, 10004, '', NULL),
 ('M-6083', 'TORRE', 1, 10004, 'janus', NULL),
@@ -585,17 +645,18 @@ INSERT INTO `articulo` (`placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `obse
 ('M-6147', 'BATERIA', 1, 39856, '', NULL),
 ('M-6150', 'PDA', 1, 9015, '', NULL),
 ('M-6159', 'ROUTERBOARD', 1, 9001, '', NULL),
+('M-6163', 'Torre', 1, 39825, '9/02/23', 76),
 ('M-6165', 'TORRE', 1, 39792, '', NULL),
-('M-6166', 'TORRE', 1, 39860, '', NULL),
+('M-6166', 'TORRE', 1, 39860, '9/02/23', 32),
 ('M-6167', 'TORRE', 1, 9008, '', NULL),
 ('M-6168', 'TORRE', 1, 9008, '', NULL),
 ('M-6169', 'TORRE', 1, 9008, '', NULL),
-('M-6170', 'TORRE', 1, 39856, '', NULL),
-('M-6171', 'TORRE', 1, 39885, '', NULL),
-('M-6172', 'TORRE', 1, 39880, '', NULL),
+('M-6170', 'TORRE', 1, 39856, '9/02/23', 71),
+('M-6171', 'TORRE', 1, 39885, '9/02/23', 72),
+('M-6172', 'TORRE', 1, 39880, '9/02/23', 73),
 ('M-6173', 'TORRE', 1, 10004, '', NULL),
-('M-6174', 'TORRE', 1, 39824, '', NULL),
-('M-6175', 'TORRE', 1, 39642, '', NULL),
+('M-6174', 'TORRE', 1, 39824, '9/02/23', 74),
+('M-6175', 'TORRE', 1, 39642, '9/02/23', 75),
 ('M-6221', 'BATERIA', 1, 39822, '', NULL),
 ('M-6222', 'BATERIA', 1, 9001, 'SE RETIRODEL P67 PARA TORRE VIJES -  113209		', NULL),
 ('M-6224', 'BATERIA', 1, 39885, '', NULL),
@@ -1047,7 +1108,7 @@ CREATE TABLE IF NOT EXISTS `historial` (
   `id_relacionado` varchar(30) NOT NULL,
   `Fecha` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=2726 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=2732 ;
 
 --
 -- Volcado de datos para la tabla `historial`
@@ -3063,7 +3124,13 @@ INSERT INTO `historial` (`id`, `usuario`, `operacion`, `tabla`, `id_relacionado`
 (2722, 'CP94320206', 'ingreso placa: MI-1420 ubicacion: 39833 incidente: 114565 usuarioEntrega: 1118303274 UsuarioRecibe: 94074692', 'Movimientos', '961', '2023-02-07 06:34:04'),
 (2723, 'CP94320206', 'ingreso simcard: 3113341727 ubicacion: 39908 incidente: 114586 usuario: 1192777098', 'MovimientosSimcard', '293', '2023-02-07 07:32:48'),
 (2724, 'CP94320206', 'ingreso simcard: 9103182406 ubicacion: 9008 incidente: 113741 usuario: 1192777098', 'MovimientosSimcard', '294', '2023-02-07 10:19:42'),
-(2725, 'CP94320206', 'ingreso simcard: 9103172462 ubicacion: 39859 incidente: 113741 usuario: 1192777098', 'MovimientosSimcard', '295', '2023-02-07 10:20:21');
+(2725, 'CP94320206', 'ingreso simcard: 9103172462 ubicacion: 39859 incidente: 113741 usuario: 1192777098', 'MovimientosSimcard', '295', '2023-02-07 10:20:21'),
+(2726, 'CP1118306349', 'ingreso simcard: 9103172462 ubicacion: 9008 incidente: 114923 usuario: 94074692', 'MovimientosSimcard', '296', '2023-02-11 16:23:11'),
+(2727, 'CP1118306349', 'ingreso simcard: 9101170303 ubicacion: 39859 incidente: 114923 usuario: 94074692', 'MovimientosSimcard', '297', '2023-02-11 16:24:08'),
+(2728, 'CP1118306349', 'ingreso simcard: 9103172474 ubicacion: 9008 incidente: 114933 usuario: 94074692', 'MovimientosSimcard', '298', '2023-02-11 19:40:56'),
+(2729, 'CP1118306349', 'ingreso simcard: 9103182414 ubicacion: 39842 incidente: 114933 usuario: 94074692', 'MovimientosSimcard', '299', '2023-02-11 19:42:55'),
+(2730, 'CP1118306349', 'ingreso placa: M-2924 descripcion: IMPRESORA TMU tipo_id: 1 ubicacion: 9008 observacion: buena', 'Articulo', 'M-2924', '2023-02-11 20:48:39'),
+(2731, 'CP1118306349', 'ingreso placa: M-3478 ubicacion: 39878 incidente: 114924 usuarioEntrega: 1118303274 UsuarioRecibe: 94074692', 'Movimientos', '962', '2023-02-11 20:49:47');
 
 -- --------------------------------------------------------
 
@@ -3084,7 +3151,7 @@ CREATE TABLE IF NOT EXISTS `movimientos` (
   KEY `usuario_entrega_id` (`usuario_entrega_id`),
   KEY `usuario_recibe_id` (`usuario_recibe_id`),
   KEY `ubicacion_id` (`ubicacion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=962 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=963 ;
 
 --
 -- Volcado de datos para la tabla `movimientos`
@@ -4041,7 +4108,8 @@ INSERT INTO `movimientos` (`id`, `articulo_id`, `ubicacion_id`, `incidente`, `fe
 (958, 'M-5115', 9011, 114145, '2023-02-01', 94074692, 1118303274),
 (959, 'M-5877', 9013, 114477, '2023-02-04', 1004030246, 1118303274),
 (960, 'M-5701', 39825, 114477, '2023-02-04', 1118303274, 1004030246),
-(961, 'MI-1420', 39833, 114565, '2023-02-07', 1118303274, 94074692);
+(961, 'MI-1420', 39833, 114565, '2023-02-07', 1118303274, 94074692),
+(962, 'M-3478', 39878, 114924, '2023-02-11', 1118303274, 94074692);
 
 -- --------------------------------------------------------
 
@@ -4060,7 +4128,7 @@ CREATE TABLE IF NOT EXISTS `movimientossimcard` (
   KEY `simcard_id` (`simcard_id`),
   KEY `ubicacion_id` (`ubicacion_id`),
   KEY `usuario_realiza` (`usuario_realiza`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=296 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=300 ;
 
 --
 -- Volcado de datos para la tabla `movimientossimcard`
@@ -4360,7 +4428,11 @@ INSERT INTO `movimientossimcard` (`id`, `simcard_id`, `ubicacion_id`, `incidente
 (292, 9103172475, 9020, 114583, '2023-02-07', 94074692),
 (293, 3113341727, 39908, 114586, '2023-02-07', 1192777098),
 (294, 9103182406, 9008, 113741, '2023-02-07', 1192777098),
-(295, 9103172462, 39859, 113741, '2023-02-07', 1192777098);
+(295, 9103172462, 39859, 113741, '2023-02-07', 1192777098),
+(296, 9103172462, 9008, 114923, '2023-02-11', 94074692),
+(297, 9101170303, 39859, 114923, '2023-02-11', 94074692),
+(298, 9103172474, 9008, 114933, '2023-02-11', 94074692),
+(299, 9103182414, 39842, 114933, '2023-02-11', 94074692);
 
 -- --------------------------------------------------------
 
@@ -4581,17 +4653,17 @@ INSERT INTO `simcard` (`Numero_linea`, `Serie`, `Usuario`, `Clave`, `Apn`, `Plan
 (9101154800, 8957123412114496914, '3162549160', '5046', 'VERTICALES.MOVISTAR.COM.CO', 'PLAN BASICO', 2, 39902, 'Nueva'),
 (9101166448, 8957123412114496906, '3185778886', '7774', 'VERTICALES2.MOVISTAR.COM.CO', 'PLAN BASICO', 2, 39919, 'Nueva'),
 (9101168348, 8957123412114496898, '3185778861', '7971', 'VERTICALES2.MOVISTAR.COM.CO', 'PLAN BASICO', 2, 9008, 'Nueva'),
-(9101170303, 8957123412114497458, '3185778858', '6326', 'VERTICALES2.MOVISTAR.COM.CO', 'PLAN BASICO', 2, 9008, 'Nueva'),
+(9101170303, 8957123412114497458, '3185778858', '6326', 'VERTICALES2.MOVISTAR.COM.CO', 'PLAN BASICO', 2, 39859, 'Nueva'),
 (9103172461, 57101602308315371, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9008, 'Nueva'),
-(9103172462, 57101602308315369, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 39859, 'Nueva'),
+(9103172462, 57101602308315369, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9008, 'Nueva'),
 (9103172465, 57101602308315368, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9008, 'Nueva'),
 (9103172468, 57101602308315373, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 39652, 'Nueva'),
-(9103172474, 57101602308315365, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 39842, 'Nueva'),
+(9103172474, 57101602308315365, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9008, 'Nueva'),
 (9103172475, 57101602308315367, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9020, 'Nueva'),
 (9103182402, 57101602308315363, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9008, 'Nueva'),
 (9103182403, 57101602308315370, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 39795, 'Nueva'),
 (9103182406, 57101602308315366, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9008, 'Nueva'),
-(9103182414, 57101602308315364, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 9008, 'Nueva'),
+(9103182414, 57101602308315364, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 39842, 'Nueva'),
 (9103182424, 57101602308315372, 'COMCELWEB', 'COMCELWEB', 'CODECALI2.COMCEL.COM.CO', 'PLAN BASICO', 1, 39787, 'Nueva');
 
 -- --------------------------------------------------------
@@ -5068,8 +5140,8 @@ INSERT INTO `usuarios` (`cedula`, `nombre`, `apellidos`, `cargo_id`, `username`,
 -- Filtros para la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  ADD CONSTRAINT `fk_datos` FOREIGN KEY (`id_datos`) REFERENCES `datos` (`id`),
   ADD CONSTRAINT `articulo_ibfk_1` FOREIGN KEY (`ubicacion_id`) REFERENCES `ubicacion` (`id`),
+  ADD CONSTRAINT `fk_datos` FOREIGN KEY (`id_datos`) REFERENCES `datos` (`id`),
   ADD CONSTRAINT `fk_tipo` FOREIGN KEY (`tipo_id`) REFERENCES `tipo_articulo` (`id`);
 
 --
