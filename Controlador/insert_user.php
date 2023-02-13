@@ -40,7 +40,7 @@
 
 			public function insertardatos($id,$activo,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL,$login){
 				$PROMEDIO = $V_CPU + $V_MEM + $V_DISCO;
-				$V_FINAL = $PROMEDIO / 3;
+				$V_FINAL = round($PROMEDIO / 3,1);
 				$sql = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
 				$sql .= "VALUES (null,'$SISTEMAOPERATIVO','$CPU ','$cache ','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL')";
 				$resultado = mysqli_query($this->conn, $sql);
@@ -79,7 +79,7 @@
 
 		public function modificarDatos($id,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL,$login){
 			$promedio=$V_CPU + $V_MEM + $V_DISCO;
-			$V_FINAL = $promedio / 3;
+			$V_FINAL = round($promedio/3,1);
 			$sql = "UPDATE `datos` SET `SISTEMAOPERATIVO`='$SISTEMAOPERATIVO',`CPU`='$CPU',`cache`='$cache',`memoria`='$memoria',`almacenamiento`='$almacenamiento',`direccion`='$direccion',`mac`='$mac',`ultimo_mantenimiento`='$ultimo_mantenimiento',`proximo_mantenimiento`='$proximo_mantenimiento',`año_lanzamiento`='$año_lanzamiento',`fecha_compra`='$fecha_compra',`V_CPU`='$V_CPU',`V_MEM`='$V_MEM',`V_DISCO`='$V_DISCO',`V_FINAL`='$V_FINAL' WHERE `datos`.id='$id'";
 			$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {
@@ -102,13 +102,12 @@
 		}
 		
 		function exportCaracDatabase() {
-
 			$sql = "SELECT a.placa, a.descripcion, t.descripcion Tipo,  u.id Sucursal, u.descripcion PDV, a.observacion, SISTEMAOPERATIVO, CPU, cache, memoria RAM, almacenamiento, direccion IP,mac, ultimo_mantenimiento, proximo_mantenimiento, año_lanzamiento, fecha_compra, V_CPU, V_MEM, V_DISCO, V_FINAL ";
 			$sql.= "FROM `articulo` a ";
 			$sql.= "INNER JOIN datos on datos.id=a.id_datos ";
 			$sql.= "INNER JOIN tipo_Articulo t on t.id=a.tipo_id ";
 			$sql.= "INNER JOIN ubicacion u on u.id=a.ubicacion_id";
-			
+			//echo $sql;
 	    	$Result = mysqli_query( $this->conn, $sql );
 
 	    	$productResult = array();
@@ -116,7 +115,7 @@
 			while( $rows = mysqli_fetch_assoc($Result) ) {
 				$productResult[] = $rows;
 			}
-
+			//print_r($productResult);
 			$filename = "caracteristicas.xls";
 
 			header("Content-Type: application/vnd.ms-excel");
