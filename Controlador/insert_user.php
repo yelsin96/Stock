@@ -42,7 +42,7 @@
 				$PROMEDIO = $V_CPU + $V_MEM + $V_DISCO;
 				$V_FINAL = round($PROMEDIO / 3,1);
 				$sql = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
-				$sql .= "VALUES (null,'$SISTEMAOPERATIVO','$CPU ','$cache ','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL')";
+				$sql .= "VALUES (null,'$SISTEMAOPERATIVO','$CPU','$cache','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL')";
 				$resultado = mysqli_query($this->conn, $sql);
 
 				//Variable del ultimo articulo
@@ -58,11 +58,11 @@
 				$resultadoU = mysqli_query($this->conn, $sql);
 
 				if ($resultado == TRUE and $resultadoU == TRUE) {
-					//$sqlHistorial = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
-					//$sqlHistorial.= "VALUES (NULL,'".$login."', id='$id',SISTEMAOPERATIVO='$SISTEMAOPERATIVO',CPU='$CPU',cache='$cache',memoria='$memoria',almacenamiento='$almacenamiento',direccion='$direccion',mac='$mac',ultimo_mantenimiento='$ultimo_mantenimiento',proximo_mantenimiento='$proximo_mantenimiento', año_lanzamiento='$año_lanzamiento' ,fecha_compra='$fecha_compra',V_CPU='$V_CPU', V_MEM='$V_MEM' ,V_DISCO='$V_DISCO', V_FINAL='$V_FINAL',NOW())";
+					$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
+					$sqlHistorial.= "VALUES (NULL,'".$login."', 'ingreso dato: ".$Dato." Sistema: ".$SISTEMAOPERATIVO." cpu: ".$CPU." cache: ".$cache." memoria: ".$memoria." almac: ".$almacenamiento." ip: ".$direccion." mac: ".$mac."','datos','".$Dato."',NOW())";
 
-					//$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
-					// header('Location: articulo.php');
+					$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
+
 					echo "<div class='alert alert-success alert-dismissible'>";
 					echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
 					echo "  <strong>Excelente!</strong> Se ingreso informacion del computador correctamente.";
@@ -83,10 +83,10 @@
 			$sql = "UPDATE `datos` SET `SISTEMAOPERATIVO`='$SISTEMAOPERATIVO',`CPU`='$CPU',`cache`='$cache',`memoria`='$memoria',`almacenamiento`='$almacenamiento',`direccion`='$direccion',`mac`='$mac',`ultimo_mantenimiento`='$ultimo_mantenimiento',`proximo_mantenimiento`='$proximo_mantenimiento',`año_lanzamiento`='$año_lanzamiento',`fecha_compra`='$fecha_compra',`V_CPU`='$V_CPU',`V_MEM`='$V_MEM',`V_DISCO`='$V_DISCO',`V_FINAL`='$V_FINAL' WHERE `datos`.id='$id'";
 			$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {
-          		//$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
-	            //$sqlHistorial.= "VALUES (NULL,'".$login."', 'modifico placa: ".$placa." descripcion: ".$descripcion." tipo_id: ".$tipo." ubicacion: ".$ubicacion." observacion: ".$observacion."','Articulo','".$placa."',NOW())";
+				$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
+				$sqlHistorial.= "VALUES (NULL,'".$login."', 'Modifico dato: ".$id." Sistema: ".$SISTEMAOPERATIVO." cpu: ".$CPU." cache: ".$cache." memoria: ".$memoria." almac: ".$almacenamiento." ip: ".$direccion." mac: ".$mac."','datos','".$id."',NOW())";
 
-            	//$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
+				$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
 
 		        echo "<div class='alert alert-success alert-dismissible'>";
 				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
