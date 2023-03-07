@@ -14,13 +14,15 @@
         <?php 
             session_start();
      
-            if(!isset($_SESSION['user_id'])){
+            if(!isset($_SESSION['userLogin'])){
                 header('Location: login.php');
                 exit;
             } else {
 
+            $empresa = $_SESSION['sedeLogin'];
+
             include "Menu.php";
-            include '../Controlador/controladorRegistro.php';
+            require( '../Controlador/controladorRegistro.php');
             $registro = new registro;
             if (!empty($_POST['boton'])){
                 $accion = $_POST['boton'];
@@ -30,7 +32,7 @@
                 $usuarioE = $_POST['usuarioE'];
                 $usuarioR = $_POST['usuarioR'];
                 if ($accion == "Insertar") {
-                    $registro->insertarRegistro($articulo,$ubicacion,$incidente,$usuarioE,$usuarioR,$_SESSION['user_id']);
+                    $registro->insertarRegistro($articulo,$ubicacion,$incidente,$usuarioE,$usuarioR,$_SESSION['userLogin']);
                     $registro->modificarArticulo($articulo,$ubicacion);
                 }
             }
@@ -88,26 +90,28 @@
                 <label>Incidente:</label>
                 <input class="form-control"  name="incidente" type="text" pattern="[0-9]{5,6}" required> 
             </div>
+            <?php
+            ?>
             <div class="form-group">
                 <label>Seleccione Usuario-Entrega:</label>
                 <select class="form-control" name="usuarioE" required>
                     <option value="">Seleccione:</option>
                     <?php
-                        $resultadoUsuarioE = $registro->consultarUsuario();
+                        $resultadoUsuarioE = $registro->consultarUsuario($empresa);
                         while ($valores = mysqli_fetch_array($resultadoUsuarioE)) {
-                            echo '<option value="'.$valores["cedula"].'">'.$valores["nombre"].' '.$valores["apellidos"].'</option>';
+                            echo '<option value="'.$valores["cc_persona"].'">'.$valores["nombre_persona"].' '.$valores["apellido_persona"].'</option>';
                         }
                     ?>  
                 </select>
-            </div>
+            </div>            
             <div class="form-group">
                 <label>Seleccione Usuario-Recibe:</label>
                 <select class="form-control" name="usuarioR" required>
                     <option value="">Seleccione:</option>
                     <?php
-                        $resultadoUsuarioR = $registro->consultarUsuario();
+                        $resultadoUsuarioR = $registro->consultarUsuario($empresa);
                         while ($valores = mysqli_fetch_array($resultadoUsuarioR)) {
-                            echo '<option value="'.$valores["cedula"].'">'.$valores["nombre"].' '.$valores["apellidos"].'</option>';
+                            echo '<option value="'.$valores["cc_persona"].'">'.$valores["nombre_persona"].' '.$valores["apellido_persona"].'</option>';
                         }
                     ?>  
                 </select>

@@ -3,7 +3,14 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="index.php">
-          <img style="height: 68px; width: 153px;" src="img/gane.png">
+          <?php
+          if ($_SESSION['sedeLogin'] == "Servired") {
+            echo "<img style='height: 68px; width: 153px;' src='img/ganeJamundi.png'>";
+          }else{
+            echo "<img style='height: 68px; width: 153px;' src='img/ganeYumbo.png'>";
+          }
+          ?>
+          
         </a>
       </div>
       <ul class="nav navbar-nav">
@@ -34,13 +41,6 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="usuarios.php">Ingresar Usuario</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
       </ul>
       <div class="navbar-header navbar-right">
         <div class="navbar-brand session">
-          <?php echo $_SESSION['user_id'] ?>
+          <?php echo $_SESSION['userLogin'] ?>
           <a href="cerrarsession.php">
             <span class="glyphicon glyphicon-off"></span>
           </a>

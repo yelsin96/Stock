@@ -1,20 +1,12 @@
-
 <?php
-/**
- 	--------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	----------------------------
- 
-*/
-include('../Modelo/conexion.php');
-class orders extends conectar {
+class orders{
 	public $mysqli;
 	public $counter;//Propiedad para almacenar el numero de registro devueltos por la consulta
 
 	function __construct(){
-		$this->mysqli = $this->conexion();
+		require_once '../Modelo/conexion.php';
+		$conectar=new conectar($_SESSION['sedeLogin']);
+		$this->mysqli = $conectar->conexion();
     }
 	
 	public function countAll($sql){
@@ -35,10 +27,10 @@ class orders extends conectar {
 		}
 		$inner="inner JOIN ubicacion ub
 				on mov.ubicacion_id = ub.id 
-				inner JOIN usuarios as usu1
-				on mov.usuario_entrega_id = usu1.cedula
-				inner JOIN usuarios as usu2
-				on mov.usuario_recibe_id = usu2.cedula
+				inner JOIN Gane.Personas as usu1
+				on mov.usuario_entrega_id = usu1.cc_persona
+				inner JOIN Gane.Personas as usu2
+				on mov.usuario_recibe_id = usu2.cc_persona
 				inner JOIN articulo as art
 				on mov.articulo_id = art.placa";
 		$sWhere.=" order by mov.id desc";

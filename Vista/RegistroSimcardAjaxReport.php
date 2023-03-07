@@ -1,4 +1,5 @@
 <?php
+session_start();
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	
@@ -10,7 +11,7 @@ if($action == 'ajax'){
 	$status=strip_tags($_REQUEST['status']);
 	$per_page=intval($_REQUEST['per_page']);
 	$tables="movimientossimcard as mov";
-	$campos="mov.id, mov.simcard_id, ub.descripcion Ubicacion, ub.id Sucursal,fecha,incidente, usu1.nombre nombre1, usu1.apellidos apellidos1";
+	$campos="mov.id, mov.simcard_id, ub.descripcion Ubicacion, ub.id Sucursal,fecha,incidente, usu1.nombre_persona nombre1, usu1.apellido_persona apellidos1";
 	//$campos="*";
 	//Variables de paginación
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;

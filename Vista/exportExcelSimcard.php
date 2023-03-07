@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	include '../Controlador/controladorSimcard.php';
 	$simcard = new simcard;
 	$simcard->exportProductDatabase(); 

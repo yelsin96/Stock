@@ -4,13 +4,17 @@
 
 		public function __construct(){
 			require_once '../Modelo/conexion.php';
-			$conectar=new conectar();
+			$conectar=new conectar($_SESSION['sedeLogin']);
 			$this->conn=$conectar->conexion();
 		}
 
 
 		public function insertarSimcard($linea,$serie,$usuario,$clave,$apn,$plan,$operador,$ubicacion,$observacion,$login){
-			$ubicacion = "9008";
+			if ($_SESSION['sedeLogin'] == "Servired") {
+				$ubicacion = "1009"; 
+			}else{
+				$ubicacion = "9008"; 
+			}
 			$sql = "INSERT INTO `simcard`( `Numero_linea`,`serie`, `usuario`, `clave`, `Apn`, `Plan`, `Operador`, `Ubicacion_id`, `Observacion`)";
             $sql.= "VALUES ('".$linea."', '".$serie."','".$usuario."','".$clave."','".$apn."','".$plan."','".$operador."',".$ubicacion.",'".$observacion."')";
           	$resultado = mysqli_query( $this->conn, $sql );
@@ -56,9 +60,16 @@
 			return $resultadoUbicacion;
 		}
 
-		public function consultarUsuario(){
-			$consultaUsuario = "SELECT * FROM `usuarios` where estado_id = 1 ORDER BY `usuarios`.`nombre` ASC";
-            $resultadoUsuario = mysqli_query( $this->conn, $consultaUsuario );
+		public function consultarUsuario($empresa){
+			require_once '../Modelo/conexionLogin.php';
+			$conectarL=new conectarUsuarios();
+			$connL=$conectarL->conexionUsuarios();
+
+			$consultaUsuario= "SELECT * FROM `Personas` p ";
+			$consultaUsuario.= "inner join  empresa e on p.id_empresa = e.id_empresa ";
+			$consultaUsuario.= "where id_estado = 1 and nombre_empresa = '$empresa' ORDER BY `nombre_persona` ASC";
+			
+            $resultadoUsuario = mysqli_query( $connL, $consultaUsuario );
 			return $resultadoUsuario;
 		}
 

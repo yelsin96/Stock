@@ -13,7 +13,7 @@
     <div class="container">
         <?php
         session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!isset($_SESSION['userLogin'])) {
             header('Location: login.php');
             exit;
         } else {
@@ -44,7 +44,7 @@
                     $promedio = 0; //$V_CPU + $V_MEM + $V_DISCO;
                     $V_FINAL = 0; //$promedio / 3;
                     if ($accion == "Agregar") {
-                        $insertardatos = $datos->insertardatos($id, $activo, $SISTEMAOPERATIVO, $CPU, $cache, $memoria, $almacenamiento, $direccion, $mac, $ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento, $fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $_SESSION['user_id']);
+                        $insertardatos = $datos->insertardatos($id, $activo, $SISTEMAOPERATIVO, $CPU, $cache, $memoria, $almacenamiento, $direccion, $mac, $ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento, $fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $_SESSION['userLogin']);
                     }
                 }
                 if (!empty($_GET['activo'])) {

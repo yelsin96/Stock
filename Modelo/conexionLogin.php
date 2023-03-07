@@ -1,16 +1,14 @@
 <?php
 
-	class conectar{
+	class conectarUsuarios{
 		public $servername = '172.20.1.92';
-		public $database = "bodega";
-		public $username = "bodega";
-		public $password = "a3c2b3bf7d";
+		public $database = "Gane";
+		public $username = "cliente";
+		public $password = "adminadmon";
 
-
-		function conexion(){
-            $conn = mysqli_connect($this->servername, $this->username, $this->password, $this->database);
-	        return $conn;
-	    }
-     
+		function conexionUsuarios(){
+			$connUsuarios = mysqli_connect($this->servername, $this->username, $this->password, $this->database);
+			return $connUsuarios;
+		}
 	}
 ?>

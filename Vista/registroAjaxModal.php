@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include '../Controlador/controladorRegistro.php';
     $registro = new registro;
     $inputId=strip_tags($_REQUEST['id']);

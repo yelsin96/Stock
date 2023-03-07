@@ -1,4 +1,5 @@
-<?php 
+<?php
+	session_start();
 	include '../Controlador/controladorRegistro.php';
 	$registro = new registro;
 	$registro->exportProductDatabase(); 

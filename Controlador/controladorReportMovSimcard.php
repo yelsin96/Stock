@@ -1,20 +1,13 @@
 
 <?php
-/**
- 	--------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	----------------------------
- 
-*/
-include('../Modelo/conexion.php');
-class orders extends conectar {
+class orders{
 	public $mysqli;
 	public $counter;//Propiedad para almacenar el numero de registro devueltos por la consulta
 
 	function __construct(){
-		$this->mysqli = $this->conexion();
+		require_once '../Modelo/conexion.php';
+		$conectar=new conectar($_SESSION['sedeLogin']);
+		$this->mysqli = $conectar->conexion();
     }
 	
 	public function countAll($sql){
@@ -35,13 +28,12 @@ class orders extends conectar {
 		}
 		$inner="inner JOIN ubicacion ub
 				on mov.ubicacion_id = ub.id 
-				inner JOIN usuarios as usu1
-				on mov.usuario_realiza = usu1.cedula
+				inner JOIN Gane.Personas as usu1
+				on mov.usuario_realiza = usu1.cc_persona
 				inner JOIN simcard as sim
 				on mov.simcard_id = sim.Numero_linea";
 		$sWhere.=" order by mov.id desc";
 		$sql="SELECT $campos FROM  $tables $inner where $sWhere LIMIT $offset,$per_page";
-		
 		$query=$this->mysqli->query($sql);
 		$sql1="SELECT * FROM $tables $inner where $sWhere";
 		//echo $sql;

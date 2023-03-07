@@ -11,7 +11,7 @@
         <?php 
             session_start();
      
-            if(!isset($_SESSION['user_id'])){
+            if(!isset($_SESSION['userLogin'])){
                 header('Location: login.php');
                 exit;
             } else {
@@ -28,7 +28,8 @@
                     $ubicacion = $_POST['ubicacion'];
                     $observacion = $_POST['observacion'];
                     $id_datos = $_POST['id_datos'];
-                    $modificarArticulo = $articulo->modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$id_datos,$_SESSION['user_id']);
+
+                    $modificarArticulo = $articulo->modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$id_datos,$_SESSION['userLogin']);
                 }
                 if ($accion == "Consultar") {
                     $placaM = $_POST['placaM'];

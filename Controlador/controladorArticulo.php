@@ -1,10 +1,10 @@
 <?php 
 	class articulo{
 		public $conn;
-
+		public $prueba="conexion";
 		public function __construct(){
 			require_once '../Modelo/conexion.php';
-			$conectar=new conectar();
+			$conectar=new conectar($_SESSION['sedeLogin']);
 			$this->conn=$conectar->conexion();
 		}
 
@@ -27,7 +27,12 @@
 		}
 
 		public function insertarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$login){
-			$ubicacion = "9008";
+			if ($_SESSION['sedeLogin'] == "Servired") {
+				$ubicacion = "1009"; 
+			}else{
+				$ubicacion = "9008"; 
+			}
+			
 			$sql = "INSERT INTO `articulo`( `placa`, `descripcion`, `tipo_id`, `ubicacion_id`, `observacion`)";
             $sql.= "VALUES ('".$placa."', '".$descripcion."','".$tipo."',".$ubicacion.",'".$observacion."')";
           	$resultado = mysqli_query( $this->conn, $sql );
@@ -57,8 +62,8 @@
 		}
 
 		public function modificarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$datos,$login){
-			if ($ubicacion == "") {
-				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`= null,`observacion`= '".$observacion."',`id_datos`= '".$datos."' WHERE `articulo`.`placa` = '".$placa."'";
+			if ($datos=="") {
+				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`='".$ubicacion."',`observacion`= '".$observacion."',`id_datos`= NULL WHERE `articulo`.`placa` = '".$placa."'";
 			}else{
 				$sql = "UPDATE `articulo` SET `descripcion`='".$descripcion."',`tipo_id`='".$tipo."',`ubicacion_id`='".$ubicacion."',`observacion`= '".$observacion."',`id_datos`= '".$datos."' WHERE `articulo`.`placa` = '".$placa."'";
 			}

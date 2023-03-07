@@ -1,10 +1,12 @@
 <?php 
 	class registro{
 		public $conn;
+		public $sede;
 
 		public function __construct(){
 			require_once '../Modelo/conexion.php';
-			$conectar=new conectar();
+			$this->sede = $_SESSION['sedeLogin'];
+			$conectar=new conectar($this->sede);
 			$this->conn=$conectar->conexion();
 		}
 
@@ -66,21 +68,8 @@
 			return $resultadoTipo;
 		}
 
-		public function consultarArticuloTipo($tipo){
-			$consultaArticulo = "SELECT * FROM `articulo` WHERE  tipo_id =".$tipo." and ubicacion_id <> '98' or ubicacion_id is null ORDER BY `articulo`.`descripcion` ASC";
-			echo $consultaArticulo;
-            $resultadoArticulo = mysqli_query( $this->conn, $consultaArticulo );
-			return $resultadoArticulo;
-		}
-
 		public function consultarArticuloModal($tipo, $id, $descripcion){
 			$consultaArticulo = "SELECT * FROM `articulo` WHERE  tipo_id =".$tipo." and descripcion like '%".$descripcion."%' and placa like '%".$id."%' ORDER BY `articulo`.`descripcion` ASC";
-            $resultadoArticulo = mysqli_query( $this->conn, $consultaArticulo );
-			return $resultadoArticulo;
-		}
-
-		public function consultarArticulo(){
-			$consultaArticulo = "SELECT * FROM `articulo` WHERE ubicacion_id <> '98'";
             $resultadoArticulo = mysqli_query( $this->conn, $consultaArticulo );
 			return $resultadoArticulo;
 		}
@@ -96,9 +85,16 @@
             $resultadoUbicacion = mysqli_query( $this->conn, $consultaUbicacion );
 			return $resultadoUbicacion;
 		}
-		public function consultarUsuario(){
-			$consultaUsuario = "SELECT * FROM `usuarios` where estado_id = 1 ORDER BY `usuarios`.`nombre` ASC";
-            $resultadoUsuario = mysqli_query( $this->conn, $consultaUsuario );
+		public function consultarUsuario($empresa){
+			require_once '../Modelo/conexionLogin.php';
+			$conectarL=new conectarUsuarios();
+			$connL=$conectarL->conexionUsuarios();
+
+			$consultaUsuario= "SELECT * FROM `Personas` p ";
+			$consultaUsuario.= "inner join  empresa e on p.id_empresa = e.id_empresa ";
+			$consultaUsuario.= "where id_estado = 1 and nombre_empresa = '$empresa' ORDER BY `nombre_persona` ASC";
+			
+            $resultadoUsuario = mysqli_query( $connL, $consultaUsuario );
 			return $resultadoUsuario;
 		}
 

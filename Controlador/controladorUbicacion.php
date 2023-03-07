@@ -4,7 +4,7 @@
 
 		public function __construct(){
 			require_once '../Modelo/conexion.php';
-			$conectar=new conectar();
+			$conectar=new conectar($_SESSION['sedeLogin']);
 			$this->conn=$conectar->conexion();
 		}
 

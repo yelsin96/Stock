@@ -1,13 +1,12 @@
-
 <?php
-
-include('../Modelo/conexion.php');
-class orders extends conectar {
+class orders{
 	public $mysqli;
 	public $counter;//Propiedad para almacenar el numero de registro devueltos por la consulta
 
 	function __construct(){
-		$this->mysqli = $this->conexion();
+		require_once '../Modelo/conexion.php';
+		$conectar=new conectar($_SESSION['sedeLogin']);
+		$this->mysqli=$conectar->conexion();
     }
 	
 	public function countAll($sql){

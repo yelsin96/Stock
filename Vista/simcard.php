@@ -11,7 +11,7 @@
         <?php 
             session_start();
      
-            if(!isset($_SESSION['user_id'])){
+            if(!isset($_SESSION['userLogin'])){
                 header('Location: login.php');
                 exit;
             } else {
@@ -31,7 +31,7 @@
                 $ubicacion = "NULL";
                 $observacion = $_POST['observacion'];
                 if ($accion == "Insertar") {
-                    $insertarsimcard = $simcard->insertarsimcard($linea,$serie,$usuario,$clave,$apn,$plan,$operador,$ubicacion,$observacion,$_SESSION['user_id']);
+                    $insertarsimcard = $simcard->insertarsimcard($linea,$serie,$usuario,$clave,$apn,$plan,$operador,$ubicacion,$observacion,$_SESSION['userLogin']);
                 }
             }
          ?>

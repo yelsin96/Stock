@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	include '../Controlador/insert_user.php';
 	$registro = new datos;
 	$registro->exportCaracDatabase(); 

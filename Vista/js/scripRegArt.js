@@ -50,9 +50,17 @@ function seleccionarArt() {
 
 function TipoArticulo() {
 	var tipo = $("#tipo").val();
-	if (tipo == '1') {
-		$("#placa").val("M-");
-	} else if (tipo == '2') {
-		$("#placa").val("MI-");
+	if ($("#sede").val() == "Servired") {
+		if (tipo == '1') {
+			$("#placa").val("S-");
+		} else if (tipo == '2') {
+			$("#placa").val("SI-");
+		}	
+	}else{
+		if (tipo == '1') {
+			$("#placa").val("M-");
+		} else if (tipo == '2') {
+			$("#placa").val("MI-");
+		}
 	}
 }

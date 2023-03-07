@@ -14,11 +14,11 @@
         <?php 
             session_start();
      
-            if(!isset($_SESSION['user_id'])){
+            if(!isset($_SESSION['userLogin'])){
                 header('Location: login.php');
                 exit;
             } else {
-
+            $empresa = $_SESSION['sedeLogin'];
             include "Menu.php";
             include '../Controlador/controladorSimcard.php';
             $simcard = new simcard;
@@ -30,7 +30,7 @@
                 $usuario = $_POST['usuario'];
 
                 if ($accion == "Insertar") {
-                    $simcard->insertarRegistroSimcard($simcardId,$ubicacion,$incidente,$usuario,$_SESSION['user_id']);
+                    $simcard->insertarRegistroSimcard($simcardId,$ubicacion,$incidente,$usuario,$_SESSION['userLogin']);
                     $simcard->modificarSimcard($simcardId,$ubicacion);
                 }
             }
@@ -94,9 +94,9 @@
                 <select class="form-control" name="usuario" required>
                     <option value="">Seleccione:</option>
                     <?php
-                        $resultadoUsuario = $simcard->consultarUsuario();
+                        $resultadoUsuario = $simcard->consultarUsuario($empresa);
                         while ($valores = mysqli_fetch_array($resultadoUsuario)) {
-                            echo '<option value="'.$valores["cedula"].'">'.$valores["nombre"].' '.$valores["apellidos"].'</option>';
+                            echo '<option value="'.$valores["cc_persona"].'">'.$valores["nombre_persona"].' '.$valores["apellido_persona"].'</option>';
                         }
                     ?>  
                 </select>

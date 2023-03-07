@@ -4,23 +4,17 @@
 
 		public function __construct(){
 			require_once '../Modelo/conexionLogin.php';
-			$conectar=new conectar();
-			$this->conn=$conectar->conexion();
+			$conectar=new conectarUsuarios();
+			$this->conn=$conectar->conexionUsuarios();
 		}
 
 		public function consultarLogin($username, $password){
-			
-
-			/*$consultaLogin = "SELECT * FROM usuarios where username='".$username."' and password='".$password."'";
+			$consultaLogin= "SELECT * FROM Personas p ";
+			$consultaLogin.= "inner join empresa e on p.id_empresa=e.id_empresa ";
+			$consultaLogin.= "WHERE username='".$username."' and password='".$password."' and id_estado=1 ";
             $resultadoLogin = mysqli_query( $this->conn, $consultaLogin );
-			return $resultadoLogin;*/
-			include('../Modelo/config.php');
-			$query = $connection->prepare("SELECT * FROM usuarios WHERE username=:username");
-		    $query->bindParam("username", $username, PDO::PARAM_STR);
-		    $query->execute();
-		 
-		    $result = $query->fetch(PDO::FETCH_ASSOC);
-		    return $result;
+			$resultadoLogin = $resultadoLogin->fetch_assoc();
+			return $resultadoLogin;
 		}
 
 		

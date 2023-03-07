@@ -1,21 +1,11 @@
 <?php 
-    include '../Controlador/controladorRegistro.php';
-    $registro = new registro;
+
     $tipo=strip_tags($_REQUEST['tipo']);
 ?>
     <label>Articulo:</label>
     <div class="form-group col-md-6 input-group">
         
-        <input type="text" name="articulo" class="form-control" id="input-articulos" >
-        <!--<select class="form-control" name="articulo" required>
-            <option value="">Seleccione:</option>
-            <?php
-                /*$resultadoArticulo = $registro->consultarArticuloTipo($tipo);
-                while ($valores = mysqli_fetch_array($resultadoArticulo)) {
-                    echo '<option value="'.$valores["placa"].'">'.$valores["descripcion"].' '.$valores["placa"].'</option>';
-                }*/
-            ?>  
-        </select> -->    
+        <input type="text" name="articulo" class="form-control" id="input-articulos" >  
         <span class="input-group-btn">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
             <span class="glyphicon glyphicon-search"></span>

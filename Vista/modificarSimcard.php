@@ -11,7 +11,7 @@
         <?php 
             session_start();
      
-            if(!isset($_SESSION['user_id'])){
+            if(!isset($_SESSION['userLogin'])){
                 header('Location: login.php');
                 exit;
             } else {
@@ -25,7 +25,7 @@
                 if ($accion == "Modificar") {
                     $linea = $_POST['lineaV'];
                     $observacion = $_POST['observacion'];
-                    $modificarSimcard = $simcard->modificarSimcard($linea,$observacion,$_SESSION['user_id']);
+                    $modificarSimcard = $simcard->modificarSimcard($linea,$observacion,$_SESSION['userLogin']);
                 }
                 if ($accion == "Consultar") {
                     $lineaM = $_POST['lineaM'];

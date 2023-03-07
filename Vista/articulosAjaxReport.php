@@ -1,4 +1,5 @@
 <?php
+session_start();
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	
@@ -45,7 +46,7 @@ if($action == 'ajax'){
 				<th>Tipo</th>
 				<th>Ubicacion</th>						
 				<th>Observacion</th>
-				<th></th>						
+				<th><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></th>						
 			</tr>
 		</thead>
 		<tbody>
@@ -68,13 +69,11 @@ if($action == 'ajax'){
 				}*/
 			?>
 		<tr>
-			<!--<td><?=$row['id'];?></td>-->
-			<td><img src="img/1.png" class="avatar" alt="Avatar" style="height: 18px; width: 18px;"> <?=$row['placa'];?></td>
+			<td style="width: 10%;"><span class="glyphicon glyphicon-file" aria-hidden="true"></span><?=$row['placa'];?></td>
 			<td><?=$row['descripcion'];?></td>
 			<td><?=$row['tipo'];?></td>                  
 			<td><?=$row['ubicacion'];?>-<?=$row['Sucursal'];?></td>
-			<td></td>
-
+			<td><?=$row['observacion'];?></td>
 			<td>
 			<?php
 			if($row['id_datos'] <> NULL ){

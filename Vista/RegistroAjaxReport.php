@@ -1,4 +1,5 @@
 <?php
+session_start();
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 
 if($action == 'ajax'){
@@ -12,7 +13,7 @@ if($action == 'ajax'){
 	$status=strip_tags($_REQUEST['status']);
 	$per_page=intval($_REQUEST['per_page']);
 	$tables="movimientos as mov";
-	$campos="mov.id, articulo_id, ub.descripcion ubicacion, ub.id Sucursal, art.descripcion articulo, fecha,incidente, usu1.nombre nombre1, usu1.apellidos apellidos1, usu2.nombre nombre2, usu2.apellidos apellidos2";
+	$campos="mov.id, articulo_id, ub.descripcion ubicacion, ub.id Sucursal, art.descripcion articulo, fecha,incidente, usu1.nombre_persona nombre1, usu1.apellido_persona apellidos1, usu2.nombre_persona nombre2, usu2.apellido_persona apellidos2";
 	//$campos="*";
 	//Variables de paginación
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;

@@ -12,7 +12,7 @@
         <?php 
             session_start();
     
-            if(!isset($_SESSION['user_id'])){
+            if(!isset($_SESSION['userLogin'])){
                 header('Location: login.php');
                 exit;
             } else {
@@ -28,7 +28,7 @@
                 $ubicacion = "NULL";
                 $observacion = $_POST['observacion'];
                 if ($accion == "Insertar") {
-                    $insertarArticulo = $articulo->insertarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$_SESSION['user_id']);
+                    $insertarArticulo = $articulo->insertarArticulo($placa,$descripcion,$tipo,$ubicacion,$observacion,$_SESSION['userLogin']);
                 }
             }
          ?>
@@ -50,6 +50,7 @@
             </div>
             <div class="form-group">
                 <label>Placa:</label>
+                <input type="hidden" id="sede" name="sede" value='<?php echo $_SESSION['sedeLogin'];?>'>
                 <input class="form-control"  name="placa" id="placa" type="text" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{1,7}" title="Ingrese un numero de Placa valido." required> 
             </div>
             <div class="form-group">

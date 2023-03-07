@@ -15,7 +15,7 @@
 
 			session_start();
 	 
-			if(!isset($_SESSION['user_id'])){
+			if(!isset($_SESSION['userLogin'])){
 			    header('Location: login.php');
 			    exit;
 			} else {
@@ -63,7 +63,7 @@
             labels: arraySistemas,
             datasets: [{
                 data: arrayCantidadSistema,
-                backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                backgroundColor: ['#FD0101','#f56954', '#01FDF9','#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#013AFD','#FFC300'],
             }]
         }
         var donutOptions = {

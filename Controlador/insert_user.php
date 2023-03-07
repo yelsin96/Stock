@@ -4,7 +4,7 @@
 
 		public function __construct(){
 			require_once '../Modelo/conexion.php';
-			$conectar=new conectar();
+			$conectar=new conectar($_SESSION['sedeLogin']);
 			$this->conn=$conectar->conexion();
 		}
 
@@ -15,7 +15,11 @@
 		}
 
 		public function consultarCountSistemaOperativo(){
-			$consultarDatos = "SELECT `SISTEMAOPERATIVO`, count(`SISTEMAOPERATIVO`) CANTIDAD FROM `datos` GROUP by `SISTEMAOPERATIVO`;";
+			$consultarDatos = "SELECT d.`SISTEMAOPERATIVO`, count(d.`SISTEMAOPERATIVO`) CANTIDAD ";
+			$consultarDatos.= "FROM `datos` d ";
+			$consultarDatos.= "INNER join articulo a on a.id_datos =d.id ";
+			$consultarDatos.= "where a.ubicacion_id <> 1 or a.ubicacion_id <> 1 ";
+			$consultarDatos.= "GROUP by `SISTEMAOPERATIVO` ";
             $resultadoDatos = mysqli_query( $this->conn, $consultarDatos );
 			return $resultadoDatos;
 		}
@@ -25,6 +29,7 @@
 			$consultarDatos.= "FROM `datos` d ";
 			$consultarDatos.= "INNER join articulo a on a.id_datos =d.id ";
 			$consultarDatos.= "INNER join ubicacion u on a.ubicacion_id= u.id ";
+			$consultarDatos.= "where a.ubicacion_id <> 1 or a.ubicacion_id <> 1 ";
 			$consultarDatos.= "order by `V_FINAL` limit 3";
             $resultadoDatos = mysqli_query( $this->conn, $consultarDatos );
 			return $resultadoDatos;
@@ -105,7 +110,7 @@
 			$sql = "SELECT a.placa, a.descripcion, t.descripcion Tipo,  u.id Sucursal, u.descripcion PDV, a.observacion, SISTEMAOPERATIVO, CPU, cache, memoria RAM, almacenamiento, direccion IP,mac, ultimo_mantenimiento, proximo_mantenimiento, año_lanzamiento, fecha_compra, V_CPU, V_MEM, V_DISCO, V_FINAL ";
 			$sql.= "FROM `articulo` a ";
 			$sql.= "INNER JOIN datos on datos.id=a.id_datos ";
-			$sql.= "INNER JOIN tipo_Articulo t on t.id=a.tipo_id ";
+			$sql.= "INNER JOIN tipo_articulo t on t.id=a.tipo_id ";
 			$sql.= "INNER JOIN ubicacion u on u.id=a.ubicacion_id";
 			//echo $sql;
 	    	$Result = mysqli_query( $this->conn, $sql );

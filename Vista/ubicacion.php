@@ -15,7 +15,7 @@
         <?php
         session_start();
 
-        if (!isset($_SESSION['user_id'])) {
+        if (!isset($_SESSION['userLogin'])) {
             header('Location: login.php');
             exit;
         } else {
@@ -64,7 +64,7 @@
                     $V_MEM = $_POST['V_MEM'];
                     $V_DISCO = $_POST['V_DISCO'];
                     $V_FINAL = $_POST['V_FINAL'];
-                    $modificarDatos = $datos->mirarDatos($placa, $descripcion, $tipo, $ubicacion, $observacion, $id, $SISTEMAOPERATIVO, $CPU, $cache, $memoria, $almacenamiento, $direccion, $mac, $ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento, $fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $_SESSION['user_id']);
+                    $modificarDatos = $datos->mirarDatos($placa, $descripcion, $tipo, $ubicacion, $observacion, $id, $SISTEMAOPERATIVO, $CPU, $cache, $memoria, $almacenamiento, $direccion, $mac, $ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento, $fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $_SESSION['userLogin']);
                 }
 
             }
