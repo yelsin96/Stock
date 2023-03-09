@@ -18,7 +18,7 @@
                 header('Location: login.php');
                 exit;
             } else {
-            $empresa = $_SESSION['sedeLogin'];
+            $empresa = $_SESSION['sedeStock'];
             include "Menu.php";
             include '../Controlador/controladorSimcard.php';
             $simcard = new simcard;

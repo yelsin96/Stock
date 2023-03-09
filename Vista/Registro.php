@@ -19,7 +19,7 @@
                 exit;
             } else {
 
-            $empresa = $_SESSION['sedeLogin'];
+            $empresa = $_SESSION['sedeStock'];
 
             include "Menu.php";
             require( '../Controlador/controladorRegistro.php');

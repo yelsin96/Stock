@@ -4,7 +4,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="index.php">
           <?php
-          if ($_SESSION['sedeLogin'] == "Servired") {
+          if ($_SESSION['sedeStock'] == "Servired") {
             echo "<img style='height: 68px; width: 153px;' src='img/ganeJamundi.png'>";
           }else{
             echo "<img style='height: 68px; width: 153px;' src='img/ganeYumbo.png'>";

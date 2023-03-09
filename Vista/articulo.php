@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label>Placa:</label>
-                <input type="hidden" id="sede" name="sede" value='<?php echo $_SESSION['sedeLogin'];?>'>
+                <input type="hidden" id="sede" name="sede" value='<?php echo $_SESSION['sedeStock'];?>'>
                 <input class="form-control"  name="placa" id="placa" type="text" pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{1,7}" title="Ingrese un numero de Placa valido." required> 
             </div>
             <div class="form-group">

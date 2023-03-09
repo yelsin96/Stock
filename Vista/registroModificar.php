@@ -15,7 +15,7 @@
                 header('Location: login.php');
                 exit;
             } else {
-            $empresa = $_SESSION['sedeLogin'];
+            $empresa = $_SESSION['sedeStock'];
             include "Menu.php";
             include '../Controlador/controladorRegistro.php';
             $registro = new registro;

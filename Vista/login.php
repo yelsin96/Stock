@@ -29,7 +29,7 @@
 		        //if (password_verify($password, $result['password'])) { ---revisar
 		    	if ($password == $result['password']) {
 		            $_SESSION['userLogin'] = $result['username'];
-                    $_SESSION['sedeLogin'] = $result['nombre_empresa'];
+                    $_SESSION['sedeStock'] = $result['nombre_empresa'];
 		            echo "<div class='alert alert-success alert-dismissible'>";
                     echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
                     echo "  <strong>Excelente!</strong> Datos correctos.";

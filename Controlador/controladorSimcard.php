@@ -4,13 +4,13 @@
 
 		public function __construct(){
 			require_once '../Modelo/conexion.php';
-			$conectar=new conectar($_SESSION['sedeLogin']);
+			$conectar=new conectar($_SESSION['sedeStock']);
 			$this->conn=$conectar->conexion();
 		}
 
 
 		public function insertarSimcard($linea,$serie,$usuario,$clave,$apn,$plan,$operador,$ubicacion,$observacion,$login){
-			if ($_SESSION['sedeLogin'] == "Servired") {
+			if ($_SESSION['sedeStock'] == "Servired") {
 				$ubicacion = "1009"; 
 			}else{
 				$ubicacion = "9008"; 
