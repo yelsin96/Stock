@@ -93,17 +93,29 @@
                             <?php echo "<input class='form-control' style='display:none;' value='" . $consultaM["id"] . "' name='id' type='text'>" ?>
                             <?php echo "<input class='form-control' disabled value='" . $consultaM["id"] . "' type='text'>" ?>
                         </div>
-                        <div class="form-group col-md-3">
+                        <!-- <div class="form-group col-md-3">
                             <label>SISTEMA OPERATIVO *</label>
-                            <input class='form-control' value="<?php echo $consultaM["SISTEMAOPERATIVO"] ?>" name='SISTEMAOPERATIVO' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9]{1,40}' required>
+                            <input class='form-control' value="<?php //echo $consultaM["SISTEMAOPERATIVO"] ?>" name='SISTEMAOPERATIVO' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9]{1,40}' required>
+                        </div> -->
+                        <div class="form-group col-md-3">
+                            <label>SISTEMAO PERATIVO *</label>
+                            <select class="form-control" name="SISTEMAOPERATIVO" for="SISTEMAOPERATIVO" required>
+                                <option value="<?php echo $consultaM["SISTEMAOPERATIVO"] ?>" selected><?php echo $consultaM["SISTEMAOPERATIVO"] ?></option>
+                                <option value="Ubuntu 16.1.0.1 LTS">Ubuntu 16.1.0.1 LTS</option>
+                                <option value="Ubuntu 16.04.3 LTS">Ubuntu 16.04.3 LTS</option>
+                                <option value="Ubuntu 20.04.4 LTS">Ubuntu 20.04.4 LTS</option>
+                                <option value="Ubuntu 20.04.5 LTS">Ubuntu 20.04.5 LTS</option>
+                                <option value="Ubuntu 22.1.0.8 LTS">Ubuntu 22.1.0.8 LTS</option>
+                                <option value="Ubuntu 22.04.1 LTS">Ubuntu 22.04.1 LTS</option>
+                            </select>
                         </div>
 
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-4">
                             <label>PROCESADOR *</label>
                             <input class='form-control' value="<?php echo $consultaM["CPU"] ?>" name='CPU' type='text' required>
                         </div>
 
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-3">
                             <label>CACHE *</label>
                             <?php echo "<input class='form-control' value='" . $consultaM["cache"] . "' name='cache' type='text' pattern='[0-9]{1,10}' required>"; ?>
                         </div>
@@ -125,7 +137,7 @@
                             <label>IP *</label>
                             <input class='form-control' value="<?php echo $consultaM["direccion"] ?>" name='direccion' type='text' pattern='[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9 ]{0,50}' required>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label>MAC *</label>
                             <input class='form-control' value="<?php echo $consultaM["mac"] ?>" name='mac' type='text' required>
                         </div>
@@ -141,19 +153,19 @@
                             <label>AÑO LANZAMIENTO *</label>
                             <?php echo "<input class='form-control' value='" . $consultaM["año_lanzamiento"] . "' name='año_lanzamiento' type='date' required>"; ?>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label>FECHA COMPRA *</label>
                             <?php echo "<input class='form-control' value='" . $consultaM["fecha_compra"] . "' name='fecha_compra' type='date' required>"; ?>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label>VALORACION CPU *</label>
                             <?php echo "<input class='form-control' value='" . $consultaM["V_CPU"] . "' name='V_CPU' type='text' pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>"; ?>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label>VALORACION RAM *</label>
                             <?php echo "<input class='form-control' value='" . $consultaM["V_MEM"] . "' name='V_MEM' type='text' pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>"; ?>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label>VALORACION DISCO *</label>
                             <?php echo "<input class='form-control' value='" . $consultaM["V_DISCO"] . "' name='V_DISCO' type='text' pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>"; ?>
                         </div>

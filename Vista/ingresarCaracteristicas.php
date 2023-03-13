@@ -67,8 +67,19 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>SISTEMAO PERATIVO *</label>
-                            <input type="text" name="SISTEMAOPERATIVO" for="SISTEMAOPERATIVO" placeholder="Ej: Ubuntu 22.04.1 LTS" class="form-control" required>
+                            <!-- <input type="text" name="SISTEMAOPERATIVO" for="SISTEMAOPERATIVO" placeholder="Ej: Ubuntu 22.04.1 LTS" class="form-control" required> -->
+
+                            <select class="form-control" name="SISTEMAOPERATIVO" for="SISTEMAOPERATIVO" required>
+                                <option value="">Seleccione:</option>
+                                <option value="Ubuntu 16.1.0.1 LTS">Ubuntu 16.1.0.1 LTS</option>
+                                <option value="Ubuntu 16.04.3 LTS">Ubuntu 16.04.3 LTS</option>
+                                <option value="Ubuntu 20.04.4 LTS">Ubuntu 20.04.4 LTS</option>
+                                <option value="Ubuntu 20.04.5 LTS">Ubuntu 20.04.5 LTS</option>
+                                <option value="Ubuntu 22.1.0.8 LTS">Ubuntu 22.1.0.8 LTS</option>
+                                <option value="Ubuntu 22.04.1 LTS">Ubuntu 22.04.1 LTS</option>
+                            </select>
                         </div>
+
                         <div class="form-group col-md-4">
                             <label>CACHE (KB)*</label>
                             <input type="text" name="cache" for="cache" placeholder="Ej: 6144" class="form-control" pattern="[0-9]{1,40}" required>
