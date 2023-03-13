@@ -19,6 +19,13 @@
 			    header('Location: login.php');
 			    exit;
 			} else {
+
+                if($_SESSION['cargoLogin'] != 'Coordinador Soporte y Mantenimiento' && $_SESSION['rolLogin'] != 'SuperAdministrador'){
+                    session_destroy();
+                    header('Location: ../../errores/403/index.html');
+                    exit;
+                }
+
 				include "Menu.php"; 
 		?>
         <div class="row">

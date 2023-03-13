@@ -30,6 +30,8 @@
 		    	if ($password == $result['password']) {
 		            $_SESSION['userLogin'] = $result['username'];
                     $_SESSION['sedeStock'] = $result['nombre_empresa'];
+                    $_SESSION["rolLogin"] = $result['nombre_rol'];
+                    $_SESSION['cargoLogin'] = $result['nombre_cargo'];
 		            echo "<div class='alert alert-success alert-dismissible'>";
                     echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
                     echo "  <strong>Excelente!</strong> Datos correctos.";
