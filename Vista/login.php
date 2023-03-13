@@ -32,6 +32,7 @@
                     $_SESSION['sedeStock'] = $result['nombre_empresa'];
                     $_SESSION["rolLogin"] = $result['nombre_rol'];
                     $_SESSION['cargoLogin'] = $result['nombre_cargo'];
+                    $_SESSION['procesoLogin'] = $result['nombre_proceso'];
 		            echo "<div class='alert alert-success alert-dismissible'>";
                     echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
                     echo "  <strong>Excelente!</strong> Datos correctos.";

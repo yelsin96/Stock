@@ -14,6 +14,8 @@
         </a>
       </div>
       <ul class="nav navbar-nav">
+        <?php if ($_SESSION['cargoLogin'] == 'Coordinador Soporte y Mantenimiento' || $_SESSION['rolLogin'] == 'SuperAdministrador') { ?>
+
         <li class="active"><a href="index.php">Inicio</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movimientos
@@ -40,6 +42,7 @@
             <li><a href="simcard.php">Ingresar Simcard</a></li>
           </ul>
         </li>
+        <?php } ?>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes
           <span class="caret"></span></a>
