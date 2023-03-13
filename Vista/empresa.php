@@ -1,7 +1,7 @@
 <?PHP 
 session_start();
 if (!isset($_SESSION['userLogin'])) {
-    header('Location: ../login-gane/view/login.php');
+    header('Location: ../../login-gane/view/login.php');
 }
 
 if ($_SESSION['sedeLogin'] == "Multired" || $_GET["empresa"] == "Multired") {
