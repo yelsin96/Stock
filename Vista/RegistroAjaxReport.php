@@ -55,7 +55,6 @@ if($action == 'ajax'){
         <tbody>
 		<?php
 		$finales=0;
-		echo "<div>hola</div>"; 
 
 		/*$hola=mysqli_fetch_array($datos);
 		print_r($hola);*/

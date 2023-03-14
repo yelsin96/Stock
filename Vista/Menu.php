@@ -42,6 +42,14 @@
             <li><a href="simcard.php">Ingresar Simcard</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Licencias
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="licenciasIngresar.php">Ingresar Licencia</a></li>
+            <li><a href="licenciasModificar.php">Modificar Licencia</a></li>
+          </ul>
+        </li>
         <?php } ?>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes
