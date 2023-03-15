@@ -73,7 +73,7 @@
 
 	          	if ($resultado==TRUE) {
 	          		$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`, `tabla`, `id_relacionado`, `fecha`)";
-	            	$sqlHistorial.= "VALUES (NULL,'".$login."', 'ingreso Relacion-licencia: Articulo: ".$placa." Licencia: ".$licencia." ,'relacion_licencias','".$placa."-".$licencia."',NOW())";
+	            	$sqlHistorial.= "VALUES (NULL,'".$login."', 'ingreso Relacion-licencia: Articulo: ".$placa." Licencia: ".$licencia."' ,'relacion_licencias','".$placa."-".$licencia."',NOW())";
 	            	$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
 
 			        echo "<div class='alert alert-success alert-dismissible'>";
