@@ -38,33 +38,47 @@
 			return $resultadolicencia;
 		}
 
+		public function consultarArticuloModal($id, $descripcion){
+			$consultaArticulo = "SELECT * FROM `articulo` a ";
+			$consultaArticulo.= "inner join  `datos` d on a.id_datos = d.id ";
+			$consultaArticulo.= "WHERE  d.nombre_equipo like '%".$descripcion."%' and a.placa like '%".$id."%' ORDER BY a.`placa` ASC";
+            $resultadoArticulo = mysqli_query( $this->conn, $consultaArticulo );
+			return $resultadoArticulo;
+		}
 
-		public function insertarRegistrolicencia($licencia,$ubicacion,$incidente,$usuario,$login){
-			$consultalicencia = "SELECT * FROM `licencia` WHERE Numero_linea =".$licencia;
+		public function consultarLicenciaoModal($id, $descripcion){
+			$consultaLicencia = "SELECT * FROM `licencias` l ";
+			$consultaLicencia.= "WHERE  l.descripcion like '%".$descripcion."%' and l.id_licencia like '%".$id."%' ORDER BY l.`descripcion` ASC";
+            $resultadoLicencia = mysqli_query( $this->conn, $consultaLicencia );
+			return $resultadoLicencia;
+		}
+
+
+		public function insertarRegistrolicencia($licencia, $placa ,$login){
+			$consultalicencia = "SELECT * FROM `relacion_licencias`  r ";
+			$consultalicencia.= "inner join `licencias` l on r.id_licencia = l.id_licencia ";
+			$consultalicencia.=  "WHERE l.`id_licencia` = '".$licencia."' and l.tipo_licencia <> 'EMPRESARIAL'";
             $resultadolicencia = mysqli_fetch_array(mysqli_query( $this->conn, $consultalicencia ));
             
-            if ($resultadolicencia['Ubicacion_id'] == $ubicacion) {
+            if ( !empty($resultadolicencia)) {
             	echo "<div class='alert alert-danger alert-dismissible'>";
 				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-				echo "  <strong>Error!</strong> licencia ya se encuentra en la ubicacion solicitada";
+				echo "  <strong>Error!</strong> licencia ya fue utilizada!!!";
 				echo "</div>";
             }else{
-				$sql = "INSERT INTO `movimientoslicencia`(`id`, `licencia_id`, `ubicacion_id`, `incidente`, `fecha`, `usuario_realiza`)";
-	            $sql.= "VALUES (NULL,'".$licencia."', '".$ubicacion."','".$incidente."',NOW(),'".$usuario."')";
+				$sql = "INSERT INTO `relacion_licencias`(`placa_articulo`, `id_licencia`) ";
+	            $sql.= "VALUES ('".$placa."', '".$licencia."')";
 
 	          	$resultado = mysqli_query( $this->conn, $sql );
 
 	          	if ($resultado==TRUE) {
-	          		$consultaUltimoId="SELECT id FROM `movimientoslicencia` order by id DESC LIMIT 1";
-	            	$resultadoUltimoId=mysqli_fetch_array(mysqli_query( $this->conn, $consultaUltimoId ));
-
 	          		$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`, `tabla`, `id_relacionado`, `fecha`)";
-	            	$sqlHistorial.= "VALUES (NULL,'".$login."', 'ingreso licencia: ".$licencia." ubicacion: ".$ubicacion." incidente: ".$incidente." usuario: ".$usuario."','Movimientoslicencia','".$resultadoUltimoId['id']."',NOW())";
+	            	$sqlHistorial.= "VALUES (NULL,'".$login."', 'ingreso Relacion-licencia: Articulo: ".$placa." Licencia: ".$licencia." ,'relacion_licencias','".$placa."-".$licencia."',NOW())";
 	            	$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
 
 			        echo "<div class='alert alert-success alert-dismissible'>";
 					echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-					echo "  <strong>Excelente!</strong> Se ingreso Registro licencia correctamente.";
+					echo "  <strong>Excelente!</strong> Se ingreso Relacion licencia correctamente.";
 					echo "</div>";
 
 	          	}else{

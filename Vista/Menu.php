@@ -48,6 +48,7 @@
           <ul class="dropdown-menu">
             <li><a href="licenciasIngresar.php">Ingresar Licencia</a></li>
             <li><a href="licenciasModificar.php">Modificar Licencia</a></li>
+            <li><a href="licenciasRelacion.php">Relacionar Licencia-Equipo</a></li>
           </ul>
         </li>
         <?php } ?>
