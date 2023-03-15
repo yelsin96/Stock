@@ -47,7 +47,8 @@
 		}
 
 		public function consultarLicenciaoModal($id, $descripcion){
-			$consultaLicencia = "SELECT * FROM `licencias` l ";
+			$consultaLicencia = "SELECT l.id_licencia, l.descripcion, l.tipo_licencia, r.id_licencia as relLicencia FROM `licencias` l ";
+			$consultaLicencia.= "left JOIN `relacion_licencias` r on l.id_licencia = r.id_licencia ";
 			$consultaLicencia.= "WHERE  l.descripcion like '%".$descripcion."%' and l.id_licencia like '%".$id."%' ORDER BY l.`descripcion` ASC";
             $resultadoLicencia = mysqli_query( $this->conn, $consultaLicencia );
 			return $resultadoLicencia;
