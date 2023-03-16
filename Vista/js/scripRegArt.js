@@ -1,4 +1,3 @@
-
 function ajaxR() {
 	var tipo = $("#tipo").val();
 	var parametros = {
@@ -63,4 +62,12 @@ function TipoArticulo() {
 			$("#placa").val("MI-");
 		}
 	}
+}
+
+function validarAdmin() {
+    if (document.getElementById('validateAdmin').checked){
+        document.getElementById('divAdmin').classList.remove('deshabilitarDiv');
+    }else{
+        document.getElementById('divAdmin').classList.add('deshabilitarDiv');
+    }
 }

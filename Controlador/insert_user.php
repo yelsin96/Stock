@@ -89,10 +89,18 @@
 				}
 		}
 
-		public function modificarDatos($id,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL,$login){
+		public function modificarDatos($id,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $nombre_equipo, $restriccion_puertos, $login){
 			$promedio=$V_CPU + $V_MEM + $V_DISCO;
 			$V_FINAL = round($promedio/3,1);
-			$sql = "UPDATE `datos` SET `SISTEMAOPERATIVO`='$SISTEMAOPERATIVO',`CPU`='$CPU',`cache`='$cache',`memoria`='$memoria',`almacenamiento`='$almacenamiento',`direccion`='$direccion',`mac`='$mac',`ultimo_mantenimiento`='$ultimo_mantenimiento',`proximo_mantenimiento`='$proximo_mantenimiento',`año_lanzamiento`='$año_lanzamiento',`fecha_compra`='$fecha_compra',`V_CPU`='$V_CPU',`V_MEM`='$V_MEM',`V_DISCO`='$V_DISCO',`V_FINAL`='$V_FINAL' WHERE `datos`.id='$id'";
+			$sql = "UPDATE `datos` SET `SISTEMAOPERATIVO`='$SISTEMAOPERATIVO',`CPU`='$CPU',`cache`='$cache',`memoria`='$memoria',`almacenamiento`='$almacenamiento',`direccion`='$direccion',`mac`='$mac',`ultimo_mantenimiento`='$ultimo_mantenimiento',`proximo_mantenimiento`='$proximo_mantenimiento',`año_lanzamiento`='$año_lanzamiento',`fecha_compra`='$fecha_compra',`V_CPU`='$V_CPU',`V_MEM`='$V_MEM', "; 
+			
+			if (empty($nombre_equipo) && empty($restriccion_puertos)) {
+				$sql.= "`V_DISCO`='$V_DISCO',`V_FINAL`='$V_FINAL', `nombre_equipo`= NULL ,`restriccion_puertos`=NULL WHERE `datos`.id='$id'";
+			}else{
+				$sql.= "`V_DISCO`='$V_DISCO',`V_FINAL`='$V_FINAL', `nombre_equipo`='$nombre_equipo',`restriccion_puertos`='$restriccion_puertos' WHERE `datos`.id='$id'";
+			}
+			
+
 			$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {
 				$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
