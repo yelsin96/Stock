@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
     <link href="css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="js/scripRegArt.js"></script>
+    <script type="text/javascript" src="js/scriptDatos.js"></script>
     <title>Ingresar Caracteristicas</title>
 </head>
 
@@ -50,8 +50,14 @@
                     $V_DISCO = $_POST['V_DISCO'];
                     $promedio = 0; //$V_CPU + $V_MEM + $V_DISCO;
                     $V_FINAL = 0; //$promedio / 3;
+                    $nombre_equipo = "";
+                    $restriccion_puertos = "";
+                    if (!empty($_POST['nombre_equipo']) && !empty($_POST['restriccion_puertos'])) {
+                        $nombre_equipo = $_POST['nombre_equipo'];
+                        $restriccion_puertos = $_POST['restriccion_puertos'];
+                    }
                     if ($accion == "Agregar") {
-                        $insertardatos = $datos->insertardatos($id, $activo, $SISTEMAOPERATIVO, $CPU, $cache, $memoria, $almacenamiento, $direccion, $mac, $ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento, $fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $_SESSION['userLogin']);
+                        $insertardatos = $datos->insertardatos($id, $activo, $SISTEMAOPERATIVO, $CPU, $cache, $memoria, $almacenamiento, $direccion, $mac, $ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento, $fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $nombre_equipo, $restriccion_puertos, $_SESSION['userLogin']);
                     }
                 }
                 if (!empty($_GET['activo'])) {
@@ -132,8 +138,29 @@
                         <div class="form-group col-md-4">
                             <label>VALORACION DISCO *</label>
                             <input type="text" name="V_DISCO" for="V_DISCO" placeholder="De 1-5" class="form-control" pattern='^[1-5]{1}(\.[0-9]{0,1})?$' required>
-                        </div>                   
+                        </div>
+                        
+                        <div id="divAdmin" class="deshabilitarDiv">
+                            <div class="form-group col-md-6">
+                                <label>NOMBRE EQUIPO</label>
+                                <input type="text" name="nombre_equipo" for="nombre_equipo" placeholder="ej: PORT-ADMIN" class="form-control" pattern='{0,100}' >
+                            </div>  
+                            <div class="form-group col-md-6">
+                                <label>RESTRICCION DE PUERTOS USB</label>
+                                <select class="form-control" name="restriccion_puertos" for="almacenamiento">
+                                    <option value="">Seleccione:</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </div>
+                        </div>
+                        
                         <input type="hidden" name="activo" value="<?php echo $activo ?>">
+                        <div class="checkbox form-group col-md-12">
+                            <label>
+                                <input type="checkbox" id="validateAdmin" onchange="validarAdmin();"> Selecciona si el equipo es Administrativo.
+                            </label>
+                        </div>
                         <div class="form-group col-md-2">
                             <input type="submit" name="boton" value="Agregar" class="btn btn-primary">
                         </div>

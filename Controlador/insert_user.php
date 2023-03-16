@@ -43,11 +43,18 @@
 		}
 
 
-			public function insertardatos($id,$activo,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL,$login){
+			public function insertardatos($id,$activo,$SISTEMAOPERATIVO,$CPU ,$cache ,$memoria,$almacenamiento,$direccion,$mac,$ultimo_mantenimiento, $proximo_mantenimiento, $año_lanzamiento ,$fecha_compra, $V_CPU, $V_MEM, $V_DISCO, $V_FINAL, $nombre_equipo, $restriccion_puertos, $login){
 				$PROMEDIO = $V_CPU + $V_MEM + $V_DISCO;
 				$V_FINAL = round($PROMEDIO / 3,1);
-				$sql = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`)";
-				$sql .= "VALUES (null,'$SISTEMAOPERATIVO','$CPU','$cache','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL')";
+				$sql = "INSERT INTO `datos`( `id`, `SISTEMAOPERATIVO`, `CPU`, `cache`, `memoria`, `almacenamiento`, `direccion`, `mac`, `ultimo_mantenimiento`, `proximo_mantenimiento`, `año_lanzamiento`, `fecha_compra`, `V_CPU`, `V_MEM`, `V_DISCO`, `V_FINAL`, `nombre_equipo`, `restriccion_puertos`)";
+
+				if (empty($nombre_equipo) && empty($restriccion_puertos)) {
+					$sql.= "VALUES (null,'$SISTEMAOPERATIVO','$CPU','$cache','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL', NULL , NULL)";
+				}else{
+					$sql.= "VALUES (null,'$SISTEMAOPERATIVO','$CPU','$cache','$memoria','$almacenamiento','$direccion','$mac','$ultimo_mantenimiento', '$proximo_mantenimiento', '$año_lanzamiento' ,'$fecha_compra', '$V_CPU', '$V_MEM', '$V_DISCO', '$V_FINAL', '$nombre_equipo', '$restriccion_puertos')";
+				}
+
+				
 				$resultado = mysqli_query($this->conn, $sql);
 
 				//Variable del ultimo articulo
