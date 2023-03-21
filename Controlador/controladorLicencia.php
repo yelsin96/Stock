@@ -10,12 +10,12 @@
 
 
 		public function insertarlicencia($id_licencia,$descripcion,$key,$tipo_licencia,$email_relacionado,$password_email,$login){
-			$sql = "INSERT INTO `licencias`(`id_licencia`, `descripcion`, `key`, `tipo_licencia`, `email_relacionado`, `password_email`) ";
-            $sql.= "VALUES ('".$id_licencia."', '".$descripcion."','".$key."','".$tipo_licencia."','".$email_relacionado."','".$password_email."')";
+			$sql = "INSERT INTO `licencias`(`id_licencia`, `descripcion`, `key`, `tipo_licencia`, `email_relacionado`, `password_email`, `id_estado`) ";
+            $sql.= "VALUES ('".$id_licencia."', '".$descripcion."','".$key."','".$tipo_licencia."','".$email_relacionado."','".$password_email."', 1)";
           	$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {
           		$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
-	            $sqlHistorial.= "VALUES (NULL,'".$login."', 'ingreso licencia: ".$id_licencia." descripcion: ".$descripcion." key: **** tipoLicencia: ".$tipo_licencia." email: ".$email_relacionado." password: *** ','licencias','".$id_licencia."',NOW())";
+	            $sqlHistorial.= "VALUES (NULL,'".$login."', 'ingreso licencia: ".$id_licencia." descripcion: ".$descripcion." key: **** tipoLicencia: ".$tipo_licencia." email: ".$email_relacionado." password: ***, estado: Activo ','licencias','".$id_licencia."',NOW())";
             	$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
 
 		        echo "<div class='alert alert-success alert-dismissible'>";
@@ -91,13 +91,13 @@
 	        }
 		}
 
-		public function modificarLicencia($id_licencia,$descripcion,$key,$tipo_licencia,$email_relacionado,$password_email,$login){
-            $sql = "UPDATE `licencias` SET `descripcion`='".$descripcion."',`key`='".$key."',`tipo_licencia`='".$tipo_licencia."',`email_relacionado`= '".$email_relacionado."',`password_email`= '".$password_email."' WHERE `id_licencia` = '".$id_licencia."'";
+		public function modificarLicencia($id_licencia,$descripcion,$key,$tipo_licencia,$email_relacionado,$password_email,$login,$estadoLic){
+            $sql = "UPDATE `licencias` SET `descripcion`='".$descripcion."',`key`='".$key."',`tipo_licencia`='".$tipo_licencia."',`email_relacionado`= '".$email_relacionado."',`password_email`= '".$password_email."', `id_estado`='".$estadoLic."' WHERE `id_licencia` = '".$id_licencia."'";
 
           	$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {
           		$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
-	            $sqlHistorial.= "VALUES (NULL,'".$login."', 'modifico licencia: ".$id_licencia." descripcion: ".$descripcion." key: **** tipoLicencia: ".$tipo_licencia." email: ".$email_relacionado." password: *** ','Licencias','".$id_licencia."',NOW())";
+	            $sqlHistorial.= "VALUES (NULL,'".$login."', 'modifico licencia: ".$id_licencia." descripcion: ".$descripcion." key: **** tipoLicencia: ".$tipo_licencia." email: ".$email_relacionado." password: ***, estado: ".$estadoLic."','Licencias','".$id_licencia."',NOW())";
 
             	$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
 

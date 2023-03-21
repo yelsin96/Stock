@@ -66,11 +66,11 @@
             </div>
             <div class="form-group">
                 <label>Email Relacionado:</label>
-                <input class="form-control"  name="email_relacionado" type="email" pattern="{0,50}" title="Ingrese email relacionado a la licencia." required> 
+                <input class="form-control"  name="email_relacionado" type="email" pattern="{0,50}" title="Ingrese email relacionado a la licencia."> 
             </div>
             <div class="form-group">
                 <label>Contraseña Email:</label>
-                <input class="form-control"  name="password_email" type="password" pattern="{0,50}" title="Ingrese contraseña usada para el correo seleccionado." required> 
+                <input class="form-control"  name="password_email" type="password" pattern="{0,50}" title="Ingrese contraseña usada para el correo seleccionado."> 
             </div>
             
             <div class="form-group">
