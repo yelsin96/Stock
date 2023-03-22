@@ -41,9 +41,7 @@
                 if (empty($row)) {
                     echo "<div class='alert alert-danger alert-dismissible'>";
                     echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
-                    echo "  <strong>Error!</strong> No se encontraron Registros";
-                    echo "	<strong>Desea ingresar carecteristicas del equipo ".$placa." !  </strong>";
-				    echo "	<a href='ingresarCaracteristicas.php?activo=".$placa."'><input type='button' class='btn btn-primary' value='insertar'></a> ";
+                    echo "  <strong>Error!</strong> No se encontraron Registros";                    
                     echo "</div>";
                     
                 }

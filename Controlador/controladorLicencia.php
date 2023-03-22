@@ -39,12 +39,11 @@
 		}
 
 		public function verLicencia($licenciaM){
-			$consultalicencia = "SELECT lic.id_licencia, lic.descripcion descLicencia, lic.tipo_licencia, est.descripcion descEstado, dat.nombre_equipo, lic.key, lic.email_relacionado, lic.password_email 
+			$consultalicencia = "SELECT lic.id_licencia, lic.descripcion descLicencia, lic.tipo_licencia, est.descripcion descEstado, lic.key, lic.email_relacionado, lic.password_email, 
+			IFNULL((SELECT d.nombre_equipo from articulo art inner join datos d on art.id_datos=d.id where art.placa = rl.placa_articulo), 'No asignado') nombre_equipo 
 			FROM licencias as lic 
 			inner JOIN estado est on lic.id_estado = est.id 
-			inner JOIN relacion_licencias as rl on lic.id_licencia = rl.id_licencia 
-			inner JOIN articulo as art on art.placa = rl.placa_articulo 
-			inner JOIN datos as dat on art.id_datos = dat.id 
+			left JOIN relacion_licencias as rl on lic.id_licencia = rl.id_licencia 
 			where lic.id_licencia = '$licenciaM'";
             $resultadolicencia = mysqli_query( $this->conn, $consultalicencia );
 			return $resultadolicencia;
