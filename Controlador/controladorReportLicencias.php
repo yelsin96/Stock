@@ -18,7 +18,8 @@ class orders{
 	public function getData($tables,$campos,$search){
 		$offset=$search['offset'];
 		$per_page=$search['per_page'];
-		$sWhere=" lic.id_licencia LIKE '%".$search['query']."%' or lic.descripcion LIKE '%".$search['query']."%' or lic.tipo_licencia LIKE '%".$search['query']."%' or est.descripcion LIKE '%".$search['query']."%' or dat.nombre_equipo LIKE '%".$search['query']."%'" ;
+		$sWhere=" lic.id_licencia LIKE '%".$search['query']."%' or lic.descripcion LIKE '%".$search['query']."%' or lic.tipo_licencia LIKE '%".$search['query']."%' or est.descripcion LIKE '%".$search['query']."%' or 
+		IFNULL((SELECT d.nombre_equipo from articulo art inner join datos d on art.id_datos=d.id where art.placa = rl.placa_articulo), 'No asignada') LIKE '%".$search['query']."%'" ;
 		if ($search['location']!=""){
 			$sWhere.=" and sim.Ubicacion_id = '".$search['location']."'";
 		}
@@ -27,15 +28,11 @@ class orders{
 		}
 		$inner="inner JOIN estado est
 				on lic.id_estado = est.id 
-				inner JOIN relacion_licencias as rl
-				on lic.id_licencia = rl.id_licencia 
-                inner JOIN articulo as art
-				on art.placa = rl.placa_articulo 
-                inner JOIN datos as dat
-				on art.id_datos = dat.id";
+				left JOIN relacion_licencias as rl
+				on lic.id_licencia = rl.id_licencia ";
 		$sWhere.=" order by lic.descripcion asc";
 		$sql="SELECT $campos FROM  $tables $inner where $sWhere LIMIT $offset,$per_page";
-	
+
 		$query=$this->mysqli->query($sql);
 		$sql1="SELECT * FROM $tables $inner where $sWhere";
 		//echo $sql;

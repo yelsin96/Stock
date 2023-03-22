@@ -12,7 +12,8 @@ if ($action == 'ajax') {
     $status = strip_tags($_REQUEST['status']);
     $per_page = intval($_REQUEST['per_page']);
     $tables = "licencias as lic";
-    $campos = "lic.id_licencia, lic.descripcion descLic, lic.tipo_licencia, est.descripcion descEstado, dat.nombre_equipo";
+    $campos = "lic.id_licencia, lic.descripcion descLic, lic.tipo_licencia, est.descripcion descEstado, 
+    IFNULL((SELECT d.nombre_equipo from articulo art inner join datos d on art.id_datos=d.id where art.placa = rl.placa_articulo), 'No asignada') as nombre_equipo ";
     //$campos="*";
     //Variables de paginación
     $page = (isset($_REQUEST['page']) && !empty($_REQUEST['page'])) ? $_REQUEST['page'] : 1;
@@ -71,6 +72,9 @@ if ($action == 'ajax') {
                         </td>
                         <td>
                             <?= $row['nombre_equipo']; ?>
+                            <?php $nombreE = (empty($row['nombre_equipo'])) ? 'No asignada' : $row['nombre_equipo'] ; 
+                                //echo $nombre;
+                                ?>
                         </td>
                         <td>
 
