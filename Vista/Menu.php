@@ -49,6 +49,7 @@
             <li><a href="licenciasIngresar.php">Ingresar Licencia</a></li>
             <li><a href="licenciasModificar.php">Modificar Licencia</a></li>
             <li><a href="licenciasRelacion.php">Relacionar Licencia-Equipo</a></li>
+            <li><a href="licenciasReport.php">Ver licencias</a></li>
           </ul>
         </li>
         <?php } ?>
