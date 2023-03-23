@@ -23,6 +23,9 @@ function seleccionarArt() {
 		var ident = this.id;
 		$("#input-placa").val(ident);
 		$("#cerrar").trigger("click");
+		if($("#eliminar").val()){
+			ajaxLicenciasEquipo() // funciona en vista eliminar
+		}
 	});
 }
 
@@ -52,5 +55,28 @@ function seleccionarLicencia() {
 		var ident = this.id;
 		$("#input-licencia").val(ident);
 		$("#cerrarL").trigger("click");
+	});
+}
+
+////////////////////////////////eliminar
+function ajaxLicenciasEquipo() {
+	//$(document).on('click', 'button[name="relacionEquipo"]', function (event) {
+	$(document).ready(function(){
+		// var placa = this.id;
+		var placa = $("#input-placa").val();
+		var parametros = {
+			"placa": placa,
+		};
+		$.ajax({
+			data: parametros,
+			url: 'licenciasRelacionEliminarAjaxLicencia.php',
+			type: 'post',
+			beforeSend: function () {
+				$("#selectLicenciaAjax").html("Procesando, espere por favor...");
+			},
+			success: function (response) {
+				$("#selectLicenciaAjax").html(response);
+			}
+		});
 	});
 }

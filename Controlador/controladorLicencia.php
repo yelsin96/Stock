@@ -65,6 +65,14 @@
 			return $resultadoLicencia;
 		}
 
+		public function consultarLicenciaPlaca($placa){
+			$consultaLicencia = "SELECT l.descripcion, l.id_licencia FROM `relacion_licencias` r ";
+			$consultaLicencia.= "inner join licencias l on r.id_licencia = l.id_licencia ";
+			$consultaLicencia.= "WHERE r.placa_articulo = '$placa'";
+            $resultadoLicencia = mysqli_query( $this->conn, $consultaLicencia );
+			return $resultadoLicencia;
+		}
+
 
 		public function insertarRegistrolicencia($licencia, $placa ,$login){
 			$consultalicencia = "SELECT * FROM `relacion_licencias`  r ";
@@ -115,6 +123,29 @@
 		        echo "<div class='alert alert-success alert-dismissible'>";
 				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
 				echo "  <strong>Excelente!</strong> Se Modifico Licencia correctamente.";
+				echo "</div>";
+
+          	}else{
+		        echo "<div class='alert alert-danger alert-dismissible'>";
+				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+				echo "  <strong>Error!</strong> ".mysqli_error($this->conn).$sql;
+				echo "</div>";
+          	}
+		}
+
+		public function eliminarLicencia($licenciaId, $Placa, $login){
+			$sql = "DELETE FROM `relacion_licencias` WHERE `relacion_licencias`.`placa_articulo` = '$Placa' AND `relacion_licencias`.`id_licencia` = '$licenciaId'";
+
+          	$resultado = mysqli_query( $this->conn, $sql );
+          	if ($resultado==TRUE) {
+          		$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
+	            $sqlHistorial.= "VALUES (NULL,'".$login."', 'Elimino relacion-licencia: placa_articulo: ".$Placa." id_licencia: ".$licenciaId."','relacion_licencias','".$Placa."-".$licenciaId."',NOW())";
+
+            	$resultadoHistorial = mysqli_query( $this->conn, $sqlHistorial );
+
+		        echo "<div class='alert alert-success alert-dismissible'>";
+				echo "  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+				echo "  <strong>Excelente!</strong> Se elimino relacion de licencia correctamente.";
 				echo "</div>";
 
           	}else{
