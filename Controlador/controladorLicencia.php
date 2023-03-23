@@ -163,7 +163,11 @@
 
 	    function exportProductDatabase() {
 
-	    	$sql ="SELECT sim.Numero_linea,CONCAT('S-',serie) serie,sim.Usuario,sim.Clave,sim.Apn,sim.Plan,ope.descripcion OperadorD, ub.descripcion Ubicacion,sim.Observacion FROM licencia as sim LEFT JOIN ubicacion ub on sim.Ubicacion_id = ub.id inner JOIN operador as ope on sim.operador = ope.id where sim.Numero_linea LIKE '%%' order by sim.operador asc";
+	    	$sql ="SELECT lic.id_licencia, lic.descripcion descLic, lic.tipo_licencia, est.descripcion descEstado, 
+			IFNULL((SELECT d.nombre_equipo from articulo art inner join datos d on art.id_datos=d.id where art.placa = rl.placa_articulo), 'No asignada') as nombre_equipo 
+			FROM licencias as lic inner JOIN estado est on lic.id_estado = est.id 
+			left JOIN relacion_licencias as rl on lic.id_licencia = rl.id_licencia ";
+
 	    	$Result = mysqli_query( $this->conn, $sql );
 
 	    	$productResult = array();
@@ -172,7 +176,7 @@
 				$productResult[] = $rows;
 			}
 
-			$filename = "licencia.xls";
+			$filename = "licencias.xls";
 
 			header("Content-Type: application/vnd.ms-excel");
 

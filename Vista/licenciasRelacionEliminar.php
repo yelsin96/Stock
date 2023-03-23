@@ -102,9 +102,9 @@
                                     <th style="width: 30%;" scope="col" class="text-center"></th>
                                 </tr>
                                 <tr>
-                                    <td scope="col"> <input type="text" class="form-control" id="input-idEquipo"
+                                    <td scope="col"> <input type="text" class="form-control" id="input-idEquipo" placeholder="M-0000" 
                                             onkeyup="ajaxModalE();"> </td>
-                                    <td scope="col"> <input type="text" class="form-control" id="input-nombreEquipo"
+                                    <td scope="col"> <input type="text" class="form-control" id="input-nombreEquipo" placeholder="PC-ADMINISTRACION"
                                             onkeyup="ajaxModalE();"> </td>
                                     <input type="hidden" id="eliminar" value="eliminar">
                                 </tr>

@@ -32,7 +32,6 @@ class orders{
 				on lic.id_licencia = rl.id_licencia ";
 		$sWhere.=" order by lic.descripcion asc";
 		$sql="SELECT $campos FROM  $tables $inner where $sWhere LIMIT $offset,$per_page";
-
 		$query=$this->mysqli->query($sql);
 		$sql1="SELECT * FROM $tables $inner where $sWhere";
 		//echo $sql;
