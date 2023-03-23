@@ -29,7 +29,7 @@
             include "Menu.php";
             include '../Controlador/controladorLicencia.php';
             $licencia = new licencia;
-
+            include "mcript.php";
 
 
             if (!empty($_GET['id_licencia'])) {
@@ -83,7 +83,7 @@
 
                         <div class="form-group col-md-6">
                             <label>KEY:</label>
-                            <?php echo "<input class='form-control' disabled value='" . $row["key"] . "' type='text'>" ?>
+                            <?php echo "<input class='form-control' disabled value='" . $desencriptar($row["key"]) . "' type='text'>" ?>
                         </div>
 
                         <div class="form-group col-md-3">

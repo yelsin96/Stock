@@ -112,7 +112,7 @@
 
 		public function modificarLicencia($id_licencia,$descripcion,$key,$tipo_licencia,$email_relacionado,$password_email,$login,$estadoLic){
             $sql = "UPDATE `licencias` SET `descripcion`='".$descripcion."',`key`='".$key."',`tipo_licencia`='".$tipo_licencia."',`email_relacionado`= '".$email_relacionado."',`password_email`= '".$password_email."', `id_estado`='".$estadoLic."' WHERE `id_licencia` = '".$id_licencia."'";
-
+			
           	$resultado = mysqli_query( $this->conn, $sql );
           	if ($resultado==TRUE) {
           		$sqlHistorial = "INSERT INTO `historial`(`id`, `usuario`, `operacion`,`tabla`, `id_relacionado`, `fecha`)";
@@ -163,7 +163,7 @@
 
 	    function exportProductDatabase() {
 
-	    	$sql ="SELECT lic.id_licencia, lic.descripcion descLic, lic.tipo_licencia, est.descripcion descEstado, 
+	    	$sql ="SELECT lic.id_licencia, lic.descripcion descLic, lic.key ,lic.tipo_licencia, est.descripcion descEstado, lic.email_relacionado, lic.password_email,  
 			IFNULL((SELECT d.nombre_equipo from articulo art inner join datos d on art.id_datos=d.id where art.placa = rl.placa_articulo), 'No asignada') as nombre_equipo 
 			FROM licencias as lic inner JOIN estado est on lic.id_estado = est.id 
 			left JOIN relacion_licencias as rl on lic.id_licencia = rl.id_licencia ";

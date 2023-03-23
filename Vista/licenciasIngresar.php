@@ -23,12 +23,13 @@
 
             include "Menu.php";
             include '../Controlador/controladorLicencia.php';
+            include "mcript.php";
             $licencia = new licencia;
             if (!empty($_POST['boton'])){
                 $accion = $_POST['boton'];
                 $id_licencia = $_POST['id_licencia'];
                 $descripcion = $_POST['descripcion'];
-                $key = $_POST['key'];
+                $key = $encriptar($_POST['key']);
                 $tipo_licencia = $_POST['tipo_licencia'];
                 $email_relacionado = $_POST['email_relacionado'];
                 $password_email = $_POST['password_email'];

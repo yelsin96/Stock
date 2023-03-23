@@ -26,13 +26,14 @@
 
             include "Menu.php";
             include '../Controlador/controladorLicencia.php';
+            include "mcript.php";
             $licencia = new licencia;
             if (!empty($_POST['boton'])) {
                 $accion = $_POST['boton'];
                 if ($accion == "Modificar") {
                     $id_licencia = $_POST['id_licencia'];
                     $descripcion = $_POST['descripcion'];
-                    $key = $_POST['key'];
+                    $key = $encriptar($_POST['key']);
                     $tipo_licencia = $_POST['tipo_licencia'];
                     $email_relacionado = $_POST['email_relacionado'];
                     $password_email = $_POST['password_email'];
@@ -86,7 +87,7 @@
                     <div class="form-group">
                         <label>Key:</label>
                         <input class="form-control" name="key" type="text" pattern="{0,150}" title="Ingrese key."
-                            value="<?= $consultaM["key"] ?>" required>
+                            value="<?= $desencriptar($consultaM["key"]) ?>" required>
                     </div>
                     <div class="form-group">
                         <label>Tipo Licencia:</label>
@@ -112,7 +113,7 @@
                     <div class="form-group">
                         <label>Estado:</label>
                         <select name="estadoLic" id="inputestadoLic" class="form-control">
-                            <option value="<?= $estado?>"><?= $estado?></option>
+                            <option value="<?= $consultaM["id_estado"]?>"><?= $estado?></option>
                             <option value="1">Activo</option>
                             <option value="2">Inactivo</option>
                         </select>
