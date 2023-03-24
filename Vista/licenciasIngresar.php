@@ -32,7 +32,7 @@
                 $key = $encriptar($_POST['key']);
                 $tipo_licencia = $_POST['tipo_licencia'];
                 $email_relacionado = $_POST['email_relacionado'];
-                $password_email = $_POST['password_email'];
+                $password_email = $encriptar($_POST['password_email']);
                 if ($accion == "Insertar") {
                     $insertarlicencia = $licencia->insertarlicencia($id_licencia,$descripcion,$key,$tipo_licencia,$email_relacionado,$password_email,$_SESSION['userLogin']);
                 }

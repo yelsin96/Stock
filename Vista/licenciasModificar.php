@@ -36,7 +36,7 @@
                     $key = $encriptar($_POST['key']);
                     $tipo_licencia = $_POST['tipo_licencia'];
                     $email_relacionado = $_POST['email_relacionado'];
-                    $password_email = $_POST['password_email'];
+                    $password_email = $encriptar($_POST['password_email']);
                     $estadoLic = $_POST['estadoLic'];
 
                     $modificarlicencia = $licencia->modificarLicencia($id_licencia, $descripcion, $key, $tipo_licencia, $email_relacionado, $password_email, $_SESSION['userLogin'],$estadoLic);
@@ -107,7 +107,7 @@
                         <label>Contraseña Email:</label>
                         <input class="form-control" name="password_email" type="password" pattern="{0,50}"
                             title="Ingrese contraseña usada para el correo seleccionado."
-                            value="<?= $consultaM["password_email"] ?>">
+                            value="<?= $desencriptar($consultaM["password_email"]) ?>">
                     </div>
 
                     <div class="form-group">

@@ -162,6 +162,7 @@
 *---------------------------------------------------------------*/
 
 	    function exportProductDatabase() {
+			require_once '../vista/mcript.php';
 
 	    	$sql ="SELECT lic.id_licencia, lic.descripcion descLic, lic.key ,lic.tipo_licencia, est.descripcion descEstado, lic.email_relacionado, lic.password_email,  
 			IFNULL((SELECT d.nombre_equipo from articulo art inner join datos d on art.id_datos=d.id where art.placa = rl.placa_articulo), 'No asignada') as nombre_equipo 
@@ -172,9 +173,10 @@
 
 	    	$productResult = array();
 
-			while( $rows = mysqli_fetch_assoc($Result) ) {
-				$productResult[] = $rows;
+			while( $rows = mysqli_fetch_assoc($Result) ) { //se recorre de esta forma para poder desencriptar la key
+				$productResult[] = Array( 'id_licencia' => $rows['id_licencia'], 'descLic' => $rows['descLic'], 'key' => $desencriptar($rows['key']), 'tipo_licencia' => $rows['tipo_licencia'] ,'descEstado' => $rows['descEstado'] ,'email_relacionado' => $rows['email_relacionado'],'password_email' => $rows['password_email'], 'nombre_equipo' => $rows['nombre_equipo'] );
 			}
+			//print_r($productResult);
 
 			$filename = "licencias.xls";
 

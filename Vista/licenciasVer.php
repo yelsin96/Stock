@@ -93,7 +93,7 @@
 
                         <div class="form-group col-md-3">
                             <label>CONTRASEÑA EMAIL:</label>
-                            <?php echo "<input class='form-control' disabled value='" . $row["password_email"] . "' type='text'>" ?>
+                            <?php echo "<input class='form-control' disabled value='" . $desencriptar($row["password_email"]) . "' type='text'>" ?>
                         </div>
                         <div class="form-group col-md-2"></div>
                         <div class="form-group col-md-4">
