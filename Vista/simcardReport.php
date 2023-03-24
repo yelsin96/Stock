@@ -56,36 +56,38 @@
 			<div class="table-filter">
 				<div class="row">
                     
-				<div class="col-sm-9">
+                    <div class="col-xs-12 col-md-6">
 						<!-- <button type="button" class="btn btn-primary"><i class="fa fa-search" onclick="load(1);"></i></button> -->
 						<div class="filter-group">
-							<label>Id_licencia</label>
-							<input type="text" class="form-control" id="id_licencia" onkeyup="load(1);">
+							<label>Buscar</label>
+							<input type="text" class="form-control" id="name" onkeyup="load(1);" placeholder="Linea, Serie, Sucursal, Observacion">
 						</div>
-						<div class="filter-group">
+						<input type="hidden" id="location" value="">
+						<!-- <div class="filter-group">
 							<label>Ubicación</label>
 							<select class="form-control" id="location" onchange="load(1);">
 			                    <option value="">Todos</option>
 			                    <?php
-			                        $resultadoUbicacion = $registro->consultarUbicacion();
+			                        $resultadoUbicacion = $simcard->consultarUbicacion();
 			                        while ($valores = mysqli_fetch_array($resultadoUbicacion)) {
 			                            echo '<option value="'.$valores["id"].'">'.$valores["descripcion"].'</option>';
 			                        }
 			                    ?>  
 			                </select>
-						</div>
-						<div class="filter-group">
-							<label>Articulo</label>
+						</div> -->
+						<input type="hidden" id="status" value="">
+						<!-- <div class="filter-group">
+							<label>Operador</label>
 							<select class="form-control" id="status" onchange="load(1);">
 								<option value="">Todos</option>
 								<?php
-			                        $resultadoArticulo = $registro->consultarArticuloFiltro();
-			                        while ($valores1 = mysqli_fetch_array($resultadoArticulo)) {
-			                            echo '<option value="'.$valores1["descripcion"].'">'.$valores1["descripcion"].'</option>';
+			                        $resultadoOperador = $simcard->consultarOperador();
+			                        while ($valores1 = mysqli_fetch_array($resultadoOperador)) {
+			                            echo '<option value="'.$valores1["id"].'">'.$valores1["descripcion"].'</option>';
 			                        }
 			                    ?>  
 							</select>
-						</div>
+						</div> -->
 						<span class="filter-icon"><i class="fa fa-filter"></i></span>
                     </div>
  
