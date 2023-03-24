@@ -2,10 +2,10 @@
 
 class conectar
 {
-	public $servername = 'localhost';
+	public $servername = '172.20.1.92';
 	public $database = "";
-	public $username = "root";
-	public $password = "";
+	public $username = "cliente";
+	public $password = "adminadmon";
 	private $bd = "";
 
 	public function __construct($bd)

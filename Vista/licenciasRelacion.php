@@ -25,7 +25,7 @@
                 exit;
             } else {
             include "Menu.php";
-            include '../Controlador/controladorlicencia.php';
+            include '../Controlador/controladorLicencia.php';
             $licencia = new licencia;
             $PlacaGuardada = "";
             if (!empty($_POST['input-placa'])) {
@@ -81,8 +81,8 @@
                                                 <th style="width: 30%;" scope="col" class="text-center"></th>
                                             </tr>
                                             <tr>
-                                                <td scope="col"> <input type="text" class="form-control" id="input-idEquipo" onkeyup="ajaxModalE();"> </td>
-                                                <td scope="col"> <input type="text" class="form-control" id="input-nombreEquipo" onkeyup="ajaxModalE();"> </td>
+                                                <td scope="col"> <input type="text" class="form-control" id="input-idEquipo" onkeyup="ajaxModalE();" placeholder="M-0000"> </td>
+                                                <td scope="col"> <input type="text" class="form-control" id="input-nombreEquipo" onkeyup="ajaxModalE();" placeholder="PC-ADMINISTRACION"> </td>
                                             </tr>
                                         </thead>
                                         <tbody id="tabla-ajaxEquipo">
@@ -128,8 +128,8 @@
                                                 <th style="width: 30%;" scope="col" class="text-center"></th>
                                             </tr>
                                             <tr>
-                                                <td scope="col"> <input type="text" class="form-control" id="input-idLicencia" onkeyup="ajaxModalL();"> </td>
-                                                <td scope="col"> <input type="text" class="form-control" id="input-nombreLicencia" onkeyup="ajaxModalL();"> </td>
+                                                <td scope="col"> <input type="text" class="form-control" id="input-idLicencia" onkeyup="ajaxModalL();" placeholder="LCM-0000-LCS-0000"> </td>
+                                                <td scope="col"> <input type="text" class="form-control" id="input-nombreLicencia" onkeyup="ajaxModalL();" placeholder="WINDOWS 10 PRO"> </td>
                                             </tr>
                                         </thead>
                                         <tbody id="tabla-ajaxLicencia">

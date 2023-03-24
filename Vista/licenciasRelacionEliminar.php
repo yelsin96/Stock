@@ -27,7 +27,7 @@
             exit;
         } else {
             include "Menu.php";
-            include '../Controlador/controladorlicencia.php';
+            include '../Controlador/controladorLicencia.php';
             $licencia = new licencia;
             $PlacaGuardada = "";
             if (!empty($_POST['input-placa'])) {
