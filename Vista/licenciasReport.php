@@ -18,7 +18,7 @@
     	<?php
     		session_start();
 
-			if('SuperAdministrador' && $_SESSION['procesoLogin'] != 'TIC'){
+			if($_SESSION['rolLogin'] != 'SuperAdministrador'){
                 session_destroy();
                 header('Location: ../../errores/403/index.html');
                 exit;
