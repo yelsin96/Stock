@@ -2,7 +2,7 @@
 //ConfiguraciÃ³n del algoritmo de encriptaciÃ³n
 //Debes cambiar esta cadena, debe ser larga y unica
 //nadie mas debe conocerla
-$clave  = 'Una cadena, muy, muy larga para mejorar la encriptacion';
+$clave  = 'Grupo empresarial Multired Servired, Gane Yumbo Gane Jamundi';
 //Metodo de encriptaciÃ³n
 $method = 'aes-256-cbc';
 // Puedes generar una diferente usando la funcion $getIV()
