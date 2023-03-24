@@ -45,6 +45,7 @@
 
         <div class="page-header">
             <h1>Ingresar Registro Licencia</h1>
+            <h5>Para realizar relacion, el equipo debe tener Nombre de equipo asignado(Caracteristicas).</h5>
         </div>
         <form action="licenciasRelacion.php" method="post" name="formRegistro">
             <div class="row">
@@ -81,7 +82,7 @@
                                                 <th style="width: 30%;" scope="col" class="text-center"></th>
                                             </tr>
                                             <tr>
-                                                <td scope="col"> <input type="text" class="form-control" id="input-idEquipo" onkeyup="ajaxModalE();" placeholder="M-0000"> </td>
+                                                <td scope="col"> <input type="text" class="form-control" id="input-idEquipo" onkeyup="ajaxModalE();" placeholder="M-0000 S-0000"> </td>
                                                 <td scope="col"> <input type="text" class="form-control" id="input-nombreEquipo" onkeyup="ajaxModalE();" placeholder="PC-ADMINISTRACION"> </td>
                                             </tr>
                                         </thead>
