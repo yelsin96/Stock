@@ -9,6 +9,8 @@
 <body>
 
 	<?php
+        header('Location: ../../login-gane/view/login.php'); // redireccionando a login Gane
+        exit;
         session_start();
         if(!isset($_SESSION['userLogin'])){
 
